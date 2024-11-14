@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import QuestionRadio from '@/components/QuestionRadio.vue'
+import QuestionText from '@/components/QuestionText.vue'
 
 const cheval = ref<string | null>(null)
 const pattes = ref<string | null>(null)
 const capitale = ref<string | null>(null)
+const reponse = ref<string | null>(null)
 const filled = computed<boolean>(
-  () => cheval.value !== null && pattes.value !== null && capitale.value !== null,
+  () =>
+    cheval.value !== null &&
+    pattes.value !== null &&
+    capitale.value !== null &&
+    reponse.value !== null,
 )
 /*
 calcul si toutes les réponses sont remplies
@@ -22,10 +29,13 @@ function submit(event: Event): void {
   if (pattes.value == 'quatre') {
     score += 1
   }
-  if (capitale.value == 'Berne') {
+  if (capitale.value == 'berne') {
     score += 1
   }
-  alert(`Votre score est de ${score} sur 3`)
+  if (reponse.value == '26') {
+    score += 1
+  }
+  alert(`Votre score est de ${score} sur 4`)
 }
 
 function reset(event: Event): void {
@@ -34,10 +44,63 @@ function reset(event: Event): void {
   cheval.value = null
   pattes.value = null
   capitale.value = null
+  reponse.value = null
 }
 </script>
 
 <template>
+  <form @submit="submit">
+    <QuestionText
+      id="reponse"
+      v-model="reponse"
+      text="Combien de pattes a un chat ?"
+      placeholder="Veuillez saisir un nombre"
+    />
+  </form>
+  <form @submit="submit">
+    <QuestionRadio
+      id="cheval"
+      v-model="cheval"
+      text="De quelle couleur est le cheval blanc de Napoléon ?"
+      :options="[
+        { value: 'blanc', text: 'Blanc' },
+        { value: 'brun', text: 'Brun' },
+        { value: 'noir', text: 'Noir' },
+        { value: 'rose', text: 'Rose' },
+      ]"
+    />
+  </form>
+  <form @submit="submit">
+    <QuestionRadio
+      id="pattes"
+      v-model="pattes"
+      text="Combien de pattes a un chat ?"
+      :options="[
+        { value: 'aucune', text: 'Aucune' },
+        { value: 'deux', text: 'Deux' },
+        { value: 'quatre', text: 'Quatre' },
+        { value: 'dix', text: 'Dix' },
+      ]"
+    />
+  </form>
+  <form @submit="submit">
+    <QuestionRadio
+      id="capitale"
+      v-model="capitale"
+      text="Quelle est la capitale de la Suisse ?"
+      :options="[
+        { value: 'geneve', text: 'Genève' },
+        { value: 'lausanne', text: 'Lausanne' },
+        { value: 'berne', text: 'Berne' },
+        { value: 'zurich', text: 'Zürich' },
+      ]"
+    />
+    <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
+    <button class="btn btn-secondary" @click="reset">Réinitialiser</button>
+  </form>
+</template>
+
+<!--
   <form @submit="submit">
     De quelle couleur est le cheval blanc de Napoléon ?
     <div class="form-check">
@@ -176,7 +239,5 @@ function reset(event: Event): void {
       />
       <label class="form-check-label" for="Zürich">Zürich</label>
     </div>
-    <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
-    <button class="btn btn-secondary" @click="reset">Réinitialiser</button>
   </form>
-</template>
+-->
