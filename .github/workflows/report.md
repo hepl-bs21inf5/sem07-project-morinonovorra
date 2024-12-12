@@ -229,14 +229,14 @@ https://github.com/blueur/quiz/tree/week/5-final
 ## Évaluation
 
 - Rapport :
-    - **Le journal de bord est à jour et complet.**
-    - Le journal de bord est bien structuré et synthétique.
+  - **Le journal de bord est à jour et complet.**
+  - Le journal de bord est bien structuré et synthétique.
 - Fonctionnalités :
-    - **L'application a les mêmes fonctionnalités que l'exemple.**
-    - **L'application est personnalisée.**
-    - **L'application a plus de fonctionnalités que l'exemple.**
-    - L'application a encore plus de fonctionnalités que l'exemple.
-    - Bootstrap est correctement utilisé pour rendre l'application responsive.
+  - **L'application a les mêmes fonctionnalités que l'exemple.**
+  - **L'application est personnalisée.**
+  - **L'application a plus de fonctionnalités que l'exemple.**
+  - L'application a encore plus de fonctionnalités que l'exemple.
+  - Bootstrap est correctement utilisé pour rendre l'application responsive.
 - Code :
-    - **Le code suit les conventions de codage (formatage, nommage, organisation, …).**
-    - Le code est lisible et maintenable (nommage, commentaires, …).
+  - **Le code suit les conventions de codage (formatage, nommage, organisation, …).**
+  - Le code est lisible et maintenable (nommage, commentaires, …).
