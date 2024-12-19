@@ -1,5 +1,6 @@
 /* https://getbootstrap.com/docs/5.3/components/buttons/#variables */
 .btn-primary {
+  margin-right: 10px;
   --bs-btn-color: #fff;
   --bs-btn-bg: #0d6efd;
   --bs-btn-border-color: #0d6efd;

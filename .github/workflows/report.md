@@ -108,7 +108,7 @@ https://github.com/blueur/quiz/tree/week/2-final
 
 - Proposer une autre manière de calculer le score (réecrire la fonction du computed) et comparer les deux méthodes
 
-### Exemple Semaine 03
+### Exemple Semaine 03 
 
 https://hep.davidtang.ch/docs/seminaire/projet#semaine-1:~:text=https%3A//github.com/blueur/quiz/tree/week/3%2Dfinal
 
@@ -120,7 +120,11 @@ https://github.com/blueur/quiz/tree/week/3-final
 
 | Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
 | ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+|              |             |                         |                    | enum (type énuméré) est un type qui peut prendre une valeur parmi un ensemble de valeurs pré-définies
+temps estimé : 45m
+temps passé : 60m
+difficultés rencontrées : code donné pour seulement 3 questions, comment donner la valeur de la quatrième question ?
+solutions trouvées : regardé la partie du code en question, compris que les numéros allaient dans l'ordre de 0 à 2, rajouté 3
 
 - États possibles :
 
@@ -142,12 +146,17 @@ https://github.com/blueur/quiz/tree/week/3-final
 | Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
 | ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
 |              |             |                         |
+temps estimé : 10m
+temps passé : 15m
 
 ### Réponses immuables (non modifiables)
 
 | Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
 | ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
 |              |             |                         |
+temps estimé : 10m
+temps passé : 5m
+
 
 ### Exemple
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { QuestionState } from '@/utils/models'
 import QuestionRadio from '@/components/QuestionRadio.vue'
 import QuestionText from '@/components/QuestionText.vue'
 
@@ -7,16 +8,32 @@ const cheval = ref<string | null>(null)
 const pattes = ref<string | null>(null)
 const capitale = ref<string | null>(null)
 const reponse = ref<string | null>(null)
-const correctAnswers = ref<boolean[]>([])
-const score = computed<number>(() => correctAnswers.value.filter((value) => value).length)
-const totalScore = computed<number>(() => correctAnswers.value.length)
-const filled = computed<boolean>(
+//const correctAnswers = ref<boolean[]>([])
+//const score = computed<number>(() => correctAnswers.value.filter((value) => value).length)
+//const totalScore = computed<number>(() => correctAnswers.value.length)
+const questionStates = ref<QuestionState[]>([])
+const score = computed<number>(
+  () => questionStates.value.filter((state) => state === QuestionState.Correct).length,
+)
+const totalScore = computed<number>(() => questionStates.value.length)
+const filled = computed<boolean>(() =>
+  questionStates.value.every((state) => state === QuestionState.Fill),
+)
+const submitted = computed<boolean>(() =>
+  questionStates.value.every(
+    (state) => state === QuestionState.Correct || state === QuestionState.Wrong,
+  ),
+)
+
+/*const filled = computed<boolean>(
   () =>
     cheval.value !== null &&
     pattes.value !== null &&
     capitale.value !== null &&
     reponse.value !== null,
 )
+*/
+
 /*
 calcul si toutes les réponses sont remplies
 && : condition
@@ -24,6 +41,10 @@ besoin d'un seul filled : ce qui vérifie qu'on a les bonnes réponses
 */
 
 function submit(event: Event): void {
+  event.preventDefault()
+  questionStates.value = questionStates.value.map(() => QuestionState.Submit)
+}
+/*function submit(event: Event): void {
   event.preventDefault()
   let score: number = 0
   if (cheval.value == 'blanc') {
@@ -40,8 +61,13 @@ function submit(event: Event): void {
   }
   alert(`Votre score est de ${score} sur 4`)
 }
+*/
 
 function reset(event: Event): void {
+  event.preventDefault()
+  questionStates.value = questionStates.value.map(() => QuestionState.Empty)
+}
+/*function reset(event: Event): void {
   event.preventDefault()
 
   cheval.value = null
@@ -49,22 +75,24 @@ function reset(event: Event): void {
   capitale.value = null
   reponse.value = null
 }
+*/
 </script>
 
 <template>
   <form @submit="submit">
     <QuestionText
       id="reponse"
-      v-model="reponse"
-      text="Combien de pattes a un chat ?"
+      v-model="questionStates[0]"
+      text="Combien de cantons a la Suisse ?"
       placeholder="Veuillez saisir un nombre"
+      answer="26"
+      answer-detail="La Suisse a vingt-six cantons."
     />
   </form>
   <form @submit="submit">
     <QuestionRadio
       id="cheval"
-      v-model="correctAnswers[0]"
-      answer="blanc"
+      v-model="questionStates[1]"
       text="De quelle couleur est le cheval blanc de Napoléon ?"
       :options="[
         { value: 'blanc', text: 'Blanc' },
@@ -72,13 +100,14 @@ function reset(event: Event): void {
         { value: 'noir', text: 'Noir' },
         { value: 'rose', text: 'Rose' },
       ]"
+      answer="blanc"
+      answer-detail="La réponse est dans la question."
     />
   </form>
   <form @submit="submit">
     <QuestionRadio
       id="pattes"
-      v-model="correctAnswers[1]"
-      answer="quatre"
+      v-model="questionStates[2]"
       text="Combien de pattes a un chat ?"
       :options="[
         { value: 'aucune', text: 'Aucune' },
@@ -86,13 +115,14 @@ function reset(event: Event): void {
         { value: 'quatre', text: 'Quatre' },
         { value: 'dix', text: 'Dix' },
       ]"
+      answer="quatre"
+      answer-detail="Le chat a quatre pattes."
     />
   </form>
   <form @submit="submit">
     <QuestionRadio
       id="capitale"
-      v-model="correctAnswers[2]"
-      answer="berne"
+      v-model="questionStates[3]"
       text="Quelle est la capitale de la Suisse ?"
       :options="[
         { value: 'geneve', text: 'Genève' },
@@ -100,11 +130,14 @@ function reset(event: Event): void {
         { value: 'berne', text: 'Berne' },
         { value: 'zurich', text: 'Zürich' },
       ]"
+      answer="berne"
+      answer-detail="Berne est la capitale de la Suisse."
     />
     <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
     <button class="btn btn-secondary" @click="reset">Réinitialiser</button>
-    <div>Réponses correctes : {{ correctAnswers }}</div>
-    <div>Score : {{ score }} / {{ totalScore }}</div>
+
+    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
+    <div>Debug états : {{ questionStates }}</div>
   </form>
 </template>
 
