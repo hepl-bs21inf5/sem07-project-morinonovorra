@@ -4,10 +4,10 @@ import { QuestionState } from '@/utils/models'
 import QuestionRadio from '@/components/QuestionRadio.vue'
 import QuestionText from '@/components/QuestionText.vue'
 
-const cheval = ref<string | null>(null)
-const pattes = ref<string | null>(null)
+const planete = ref<string | null>(null)
+const oeuvre = ref<string | null>(null)
 const capitale = ref<string | null>(null)
-const reponse = ref<string | null>(null)
+const pi = ref<string | null>(null)
 //const correctAnswers = ref<boolean[]>([])
 //const score = computed<number>(() => correctAnswers.value.filter((value) => value).length)
 //const totalScore = computed<number>(() => correctAnswers.value.length)
@@ -80,65 +80,67 @@ function reset(event: Event): void {
 
 <template>
   <form @submit="submit">
-    <QuestionText
-      id="reponse"
+    <QuestionRadio
+      id="planete"
       v-model="questionStates[0]"
-      text="Combien de cantons a la Suisse ?"
-      placeholder="Veuillez saisir un nombre"
-      answer="26"
-      answer-detail="La Suisse a vingt-six cantons."
+      text="Quelle est la planète la plus dense du système solaire ?"
+      :options="[
+        { value: 'jupiter', text: 'Jupiter' },
+        { value: 'saturne', text: 'Saturne' },
+        { value: 'mercure', text: 'Mercure' },
+        { value: 'terre', text: 'Terre' },
+      ]"
+      answer="terre"
+      answer-detail="Vrai ! La Terre est la planète la plus dense du système solaire, avec une densité moyenne d'environ 5,52 g/cm3."
     />
   </form>
   <form @submit="submit">
     <QuestionRadio
-      id="cheval"
+      id="oeuvre"
       v-model="questionStates[1]"
-      text="De quelle couleur est le cheval blanc de Napoléon ?"
+      text="Quelle est la seule oeuvre à avoir été traduite dans toutes les langues officielles de l'ONU ?"
       :options="[
-        { value: 'blanc', text: 'Blanc' },
-        { value: 'brun', text: 'Brun' },
-        { value: 'noir', text: 'Noir' },
-        { value: 'rose', text: 'Rose' },
+        { value: 'le petit prince', text: 'Le Petit Prince' },
+        { value: 'les misérables', text: 'Les Misérables' },
+        { value: '1984', text: '1984' },
+        { value: 'harry potter', text: 'Harry Potter' },
       ]"
-      answer="blanc"
-      answer-detail="La réponse est dans la question."
-    />
-  </form>
-  <form @submit="submit">
-    <QuestionRadio
-      id="pattes"
-      v-model="questionStates[2]"
-      text="Combien de pattes a un chat ?"
-      :options="[
-        { value: 'aucune', text: 'Aucune' },
-        { value: 'deux', text: 'Deux' },
-        { value: 'quatre', text: 'Quatre' },
-        { value: 'dix', text: 'Dix' },
-      ]"
-      answer="quatre"
-      answer-detail="Le chat a quatre pattes."
+      answer="le petit prince"
+      answer-detail="Vrai ! 'Le Petit Prince' d'Antoine de Saint-Exupéry a été traduit dans toutes les langues officielles de l'ONU."
     />
   </form>
   <form @submit="submit">
     <QuestionRadio
       id="capitale"
-      v-model="questionStates[3]"
-      text="Quelle est la capitale de la Suisse ?"
+      v-model="questionStates[2]"
+      text="Quelle est la capitale du Kazakhstan ?"
       :options="[
-        { value: 'geneve', text: 'Genève' },
-        { value: 'lausanne', text: 'Lausanne' },
-        { value: 'berne', text: 'Berne' },
-        { value: 'zurich', text: 'Zürich' },
+        { value: 'almaty', text: 'Almaty' },
+        { value: 'tachkent', text: 'Tachkent' },
+        { value: 'astana', text: 'Astana' },
+        { value: 'achgabat', text: 'Achgabat' },
       ]"
-      answer="berne"
-      answer-detail="Berne est la capitale de la Suisse."
+      answer="astana"
+      answer-detail="Vrai ! La capitale du Kazakhstan est Astana."
     />
-    <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
-    <button class="btn btn-secondary" @click="reset">Réinitialiser</button>
-
-    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
-    <div>Debug états : {{ questionStates }}</div>
   </form>
+  <form @submit="submit">
+    <QuestionText
+      id="pi"
+      v-model="questionStates[3]"
+      text="Quelles sont les 10 premières décimales de pi ?"
+      placeholder="Veuillez saisir un nombre"
+      answer="14159265"
+      answer-detail="Les 10 premières décimales de pi sont : 3, 1415 92 6535."
+    />
+  </form>
+
+  <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
+
+  <button class="btn btn-secondary" @click="reset">Réinitialiser</button>
+
+  <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
+  <div>Debug états : {{ questionStates }}</div>
 </template>
 
 <!--
