@@ -1,6 +1,7 @@
 /* https://getbootstrap.com/docs/5.3/components/buttons/#variables */
+
 .btn-primary {
-  margin-right: 10px;
+  margin-right: 20px;
   --bs-btn-color: #fff;
   --bs-btn-bg: #0d6efd;
   --bs-btn-border-color: #0d6efd;
@@ -31,4 +32,28 @@
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: #0d6efd;
   --bs-btn-disabled-border-color: #0d6efd;
+}
+
+/*espace entre questions*/
+.question {
+  margin-bottom: 30px; /* Ajustez la valeur pour ajouter plus d’espace */
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Colonnes ajustables */
+  gap: 10px; /* Espace entre les options */
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Répartition des colonnes */
+  gap: 10px; /* Espace entre les réponses */
+}
+
+.question-image {
+  display: block;
+  /*margin: 10px auto;  Centrez l'image (10= tout à gauche, 30=centre)*/
+  max-width: 50%; /* Adaptez l'image à la taille du conteneur */
+  height: auto;
 }

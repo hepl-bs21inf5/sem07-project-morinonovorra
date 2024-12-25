@@ -45,46 +45,36 @@ function reset(event: Event): void {
     <form @submit="submit">
       <div class="question">
         <h5>question 1 : sciences</h5>
-        <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\6043ef3f3ef82d890a6a7bc2bcd899ff.jpg"
-          alt="ordre planètes"
-          class="question-image"
-        />
         <QuestionRadio
           id="planete"
           v-model="questionStates[0]"
-          text="quelle est la cinquième planète la plus proche du soleil ?"
+          text="Quelle est la planète la plus dense du système solaire ?"
           :options="[
-            { value: 'jupiter', text: 'jupiter' },
-            { value: 'saturne', text: 'saturne' },
-            { value: 'mars', text: 'mars' },
-            { value: 'neptune', text: 'neptune' },
+            { value: 'jupiter', text: 'Jupiter' },
+            { value: 'saturne', text: 'Saturne' },
+            { value: 'mercure', text: 'Mercure' },
+            { value: 'terre', text: 'Terre' },
           ]"
-          answer="jupiter"
-          answer-detail="petit mémo-technique (regarder la première lettre de chaque mot) : monsieur vous travaillez mal, je suis un nigaud."
+          answer="terre"
+          answer-detail="La Terre est la planète la plus dense du système solaire, avec une densité moyenne d'environ 5,52 g/cm3."
         />
       </div>
     </form>
     <form @submit="submit">
       <div class="question">
-        <h5>question 2 : littérature et arts</h5>
-        <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\4a9cfdec861d304d61a40b06a402fe7f.jpg"
-          alt="nuit étoilée"
-          class="question-image"
-        />
+        <h5>question 2 : littérature</h5>
         <QuestionRadio
           id="oeuvre"
           v-model="questionStates[1]"
-          text="quel artiste a peint 'la nuit étoilée' ?"
+          text="Quelle est la seule oeuvre à avoir été traduite dans toutes les langues officielles de l'ONU ?"
           :options="[
-            { value: 'claude monet', text: 'claude monet' },
-            { value: 'pablo picasso', text: 'pablo picasso' },
-            { value: 'vincent van gogh', text: 'vincent van gogh' },
-            { value: 'edvard munch', text: 'edvard munch' },
+            { value: 'le petit prince', text: 'Le Petit Prince' },
+            { value: 'les misérables', text: 'Les Misérables' },
+            { value: '1984', text: '1984' },
+            { value: 'harry potter', text: 'Harry Potter' },
           ]"
-          answer="vincent van gogh"
-          answer-detail="cette oeuvre, peinte en 1889, est l'une des plus célèbres de van gogh ; elle représente un paysage nocturne avec des étoiles tournoyantes, un exemple de son style post-impressionniste unique."
+          answer="le petit prince"
+          answer-detail="'Le Petit Prince' d'Antoine de Saint-Exupéry a été traduit dans toutes les langues officielles de l'ONU."
         />
       </div>
     </form>

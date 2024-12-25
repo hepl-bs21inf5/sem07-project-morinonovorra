@@ -91,6 +91,7 @@
   - :class="{ diabled: !filled }" : Ajoute une classe CSS conditionnellement.
 
 ### Exemple Semaine 01
+
 ### <p style="color: PeachPuff;">Journal de bord</p>
 
 https://github.com/blueur/quiz/tree/week/1-final
@@ -329,6 +330,30 @@ https://github.com/blueur/quiz/tree/week/5-final
 - Adapter le Trivia pour pouvoir y jouer.
 - Ordre aléatoire des choix dans **QuestionRadio.vue**.
 - Ordre aléatoire des questions.
+
+> ajouter titres aux questions (afin de mieux comprendre type de réponse attendue)
+
+- <template>
+    <div class="quiz-container">
+      <form @submit="submit">
+        <div class="question">
+          <h2>Question 1 : Une seule réponse</h2>
+          <QuestionRadio
+          ...
+        answer-detail="La Terre est la planète la plus dense du système solaire."
+          />
+        </div>
+        <!-- Répétez pour chaque question -->
+      </form>
+    </div>
+  </template>
+
+> ajout espace entre questions afin que ce soit plus clair et lisible (dans css)
+
+.question {
+  margin-bottom: 30px; /* Ajustez la valeur pour ajouter plus d’espace */
+}
+
 
 > Expliquer votre démarche pour les améliorations que vous avez choisies (vous devez pouvoir expliquer votre code afin de valider une amélioration) :
 

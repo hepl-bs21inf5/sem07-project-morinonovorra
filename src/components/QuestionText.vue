@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { QuestionState } from '@/utils/models'
-//import { defineModel } from 'vue'//
 import { ref, watch } from 'vue'
 
 const model = defineModel<QuestionState>()
-//const reponse = defineModel<string | null>()
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
@@ -36,23 +34,34 @@ watch(model, (newModel) => {
 })
 </script>
 
+<!--prochain paragraphe à changer/vérifier-->
 <template>
-  <label for="exampleFormControlInput" class="form-label"> Combien de cantons a la Suisse ? </label>
+  <label for="props.id" class="form-label">
+    Combien de pays d'Europe sont traversés par le Danube ?
+  </label>
   <input
-    id="exampleFormControlInput"
+    id="props.id"
     v-model="value"
     class="form-control"
-    placeholder="Veuillez saisir un nombre"
+    :disabled="
+      model === QuestionState.Submit ||
+      model === QuestionState.Correct ||
+      model === QuestionState.Wrong
+    "
+    :placeholder="props.placeholder"
   />
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
-    <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
-    <p v-else class="text-danger">Faux ! La réponse était : {{ props.answer }}</p>
+    <p v-if="model === QuestionState.Correct" class="text-success">Juste, trop fort(e) !</p>
+    <p v-else class="text-danger">Dommage ! La réponse était : {{ props.answer }}</p>
     <p class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
+  
 </template>
 
 <style scoped>
 .text-danger {
-  color: purple !important;
+  color: red !important;
 }
 </style>
+
+placeholder="Veuillez saisir un nombre"

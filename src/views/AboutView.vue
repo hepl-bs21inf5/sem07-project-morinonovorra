@@ -1,12 +1,13 @@
+<!--page d'intro / infos-->
+
 <template>
   <div class="container mt-3">
-    <h1>À propos</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-      non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
+    <h1>à propos</h1>
+    <img
+      src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\d9b1855ef010926aaebc5d4264b9fc55.jpg"
+      alt="Danube"
+      class="question-image"
+    />
+    <p>bienvenue, petite précision que les majuscules n'ont pas été utilisées exprès</p>
   </div>
 </template>

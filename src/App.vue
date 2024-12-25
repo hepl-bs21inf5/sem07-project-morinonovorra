@@ -5,9 +5,10 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <RouterLink class="navbar-brand" to="/">
-        <i class="bi bi-question-square"></i>
-        Quiz
+      <RouterLink class="navbar-brand" to="/projet">
+        <!--navbar-brand= principal, nav-link= secondaire-->
+        <i class="bi bi-info-circle"></i>
+        à propos
       </RouterLink>
       <button
         class="navbar-toggler"
@@ -20,18 +21,25 @@ import { RouterLink, RouterView } from 'vue-router'
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/about">
-              <i class="bi bi-info-square"></i>
-              À propos
+            <RouterLink class="nav-link" to="/amateur">
+              <i class="bi bi-puzzle"></i>
+              quiz amateur
+            </RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" to="/expert">
+              <i class="bi bi-puzzle-fill"></i>
+              quiz expert
             </RouterLink>
           </li>
           <li>
             <RouterLink class="nav-link" to="/trivia">
-              <i class="bi bi-question"></i>
-              Trivia
+              <i class="bi bi-joystick"></i>
+              trivia
             </RouterLink>
           </li>
         </ul>
