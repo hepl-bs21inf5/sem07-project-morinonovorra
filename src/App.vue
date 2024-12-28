@@ -1,3 +1,5 @@
+<!--barre de navigation dans le jeu-->
+
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 </script>
@@ -25,15 +27,15 @@ import { RouterLink, RouterView } from 'vue-router'
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/amateur">
+            <RouterLink class="nav-link" to="/relax">
               <i class="bi bi-puzzle"></i>
-              quiz amateur
+              quiz relax
             </RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/expert">
+            <RouterLink class="nav-link" to="/pro">
               <i class="bi bi-puzzle-fill"></i>
-              quiz expert
+              quiz pro
             </RouterLink>
           </li>
           <li>

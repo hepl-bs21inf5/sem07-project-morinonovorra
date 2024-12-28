@@ -18,9 +18,9 @@
   --bs-btn-disabled-border-color: #0d6efd;
 }
 .btn-secondary {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #0d6efd;
-  --bs-btn-border-color: #0d6efd;
+  --bs-btn-color: #ffffff; /*couleur de l'écriture*/
+  --bs-btn-bg: #0d6efd; /*fond du bouton*/
+  --bs-btn-border-color: #0d6efd; /*contour du bouton*/
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #0b5ed7;
   --bs-btn-hover-border-color: #0a58ca;
@@ -36,7 +36,7 @@
 
 /*espace entre questions*/
 .question {
-  margin-bottom: 30px; /* Ajustez la valeur pour ajouter plus d’espace */
+  margin-bottom: 30px;
 }
 
 .options-grid {
@@ -57,3 +57,5 @@
   max-width: 50%; /* Adaptez l'image à la taille du conteneur */
   height: auto;
 }
+
+

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { QuestionState } from '@/utils/models'
+import { QuestionState } from '@/models'
 import QuestionRadio from '@/components/QuestionRadio.vue'
 import QuestionText from '@/components/QuestionText.vue'
 import QuestionCheckbox from './QuestionCheckbox.vue'
@@ -90,67 +90,73 @@ function reset(event: Event): void {
     </form>
     <form @submit="submit">
       <div class="question">
-        <h5>Question 3 : Une seule réponse</h5>
+        <h5>question 3 : capitale</h5>
+        <img
+          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\THE BEST AUSTRALIA FLAG MAP IMAGES - eDigital Agency.jpeg"
+          alt="ordre planètes"
+          class="question-image"
+        />
         <QuestionRadio
           id="capitale"
           v-model="questionStates[2]"
-          text="Quelle est la capitale du Kazakhstan ?"
+          text="quelle est la capitale de l'australie ?"
           :options="[
-            { value: 'almaty', text: 'Almaty' },
-            { value: 'tachkent', text: 'Tachkent' },
-            { value: 'astana', text: 'Astana' },
-            { value: 'achgabat', text: 'Achgabat' },
+            { value: 'melbourne', text: 'melbourne' },
+            { value: 'perth', text: 'perth' },
+            { value: 'sydney', text: 'sydney' },
+            { value: 'canberra', text: 'canberra' },
           ]"
-          answer="astana"
-          answer-detail="Vrai ! La capitale du Kazakhstan est Astana."
+          answer="canberra"
+          answer-detail="cette ville a été choisie en 1908 comme compromis entre les deux grandes rivales, sydney et melbourne"
         />
       </div>
     </form>
     <form @submit="submit">
       <div class="question">
-        <h5>Question 4 : Plusieurs réponses</h5>
+        <h5>question 4 : choix multiples</h5>
         <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\la-mer-caspienne.jpeg"
-          alt="Mer Caspienne"
+          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\europe.jpg"
+          alt="slovaquie"
           class="question-image"
         />
         <QuestionCheckbox
           id="membres"
           v-model="questionStates[3]"
-          text="Quels pays bordent la mer Caspienne ?"
+          text="quels sont les pays qui entourent la slovaquie ?"
           :options="[
-            { value: 'russie', text: 'Russie' },
-            { value: 'turquie', text: 'Turquie' },
-            { value: 'iran', text: 'Iran' },
-            { value: 'azerbaidjan', text: 'Azerbaïdjan' },
-            { value: 'kazakhstan', text: 'Kazakhstan' },
-            { value: 'ouzbekistan', text: 'Ouzbékistan' },
-            { value: 'turkmenistan', text: 'Turkménistan' },
-            { value: 'irak', text: 'Irak' },
+            { value: 'republique tcheque', text: 'république tchèque' },
+            { value: 'slovenie', text: 'slovénie' },
+            { value: 'ukraine', text: 'ukraine' },
+            { value: 'roumanie', text: 'roumanie' },
+            { value: 'autriche', text: 'autriche' },
+            { value: 'bielorussie', text: 'biélorussie' },
+            { value: 'pologne', text: 'pologne' },
+            { value: 'hongrie', text: 'hongrie' },
           ]"
-          :answer="['Russie', 'Kazakhstan', 'Iran', 'Azerbaïdjan', 'Turkménistan']"
-          answer-detail="La mer Caspienne, alimentée principalement par la Volga, est bordée par cinq pays : la Russie, le Kazakhstan, l'Iran, l'Azerbaïdjan et le Turkménistan. La Turquie et l'Ouzbékistan n'y ont pas d'accès direct."
+          :answer="['republique tcheque', 'ukraine', 'autriche', 'pologne', 'hongrie']"
+          answer-detail="la slovaquie ...."
         />
       </div>
     </form>
     <form @submit="submit">
       <div class="question">
-        <h5>Question 5 : Question ouverte</h5>
+        <h5>question 5 : réponse libre</h5>
         <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\danube.jpg"
-          alt="Danube"
+          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\ceinture-de-feu-du-pacifique.jpg"
+          alt="volcan"
           class="question-image"
         />
         <QuestionText
-          id="pi"
+          id="volcan"
           v-model="questionStates[4]"
-          text="Combien de pays d'Europe sont traversés par le Danube ?"
-          answer="10"
-          answer-detail="Le Danube, second plus long fleuve d'Europe derrière la Volga, est un fleuve qui traverse ou longe dix pays d'Europe : l'Allemagne, l'Autriche, la Slovaquie, la Hongrie, la Croatie, la Serbie, la Bulgarie, la Roumanie, la Moldavie et l'Ukraine."
-          placeholder="Veuillez saisir un nombre"
+          text="quel est le pays qui possède le plus de volcans actifs ?"
+          answer="indonésie"
+          :accepted-answers="['indonésie', 'indonesia', 'Indonésie', 'Indonesie', 'Indonesia' ]"
+          answer-detail="l'indonésie, avec plus de 130 volcans actifs, se trouve sur la ceinture de feu du pacifique, une région où l'activité tectonique est intense."
+          placeholder="indice : la carte"
         />
       </div>
-      <!-- attention prochain paragraphe à mieux regarder/comprendre-->
+  
       <br />
       <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">
         Terminer
@@ -158,8 +164,8 @@ function reset(event: Event): void {
       &nbsp;
 
       <button class="btn btn-secondary" @click="reset">Réinitialiser</button>
-      <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
-      <div>Debug états : {{ questionStates }}</div>
+      <div v-if="submitted">votre score est de : {{ score }} / {{ totalScore }}</div>
+      <div>résultats : {{ questionStates }}</div>
     </form>
   </div>
 </template>

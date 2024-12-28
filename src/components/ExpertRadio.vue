@@ -62,8 +62,8 @@ watch(model, (newModel) => {
     </label>
   </div>
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
-    <p v-if="model === QuestionState.Correct" class="text-success">bien joué ! +1</p>
-    <p v-else class="text-danger">mince ! la réponse était : {{ answerText }}</p>
+    <p v-if="model === QuestionState.Correct" class="text-success">incroyable ! +1</p>
+    <p v-else class="text-danger">dommage ! la réponse était : {{ answerText }}</p>
     <p class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
 </template>

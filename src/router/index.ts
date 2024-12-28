@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import QuizView from '../views/QuizView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // dans l'ordre : relax, à propos, trivia, expert
     {
-      path: '/amateur',
-      name: 'amateur',
+      path: '/relax',
+      name: 'relax',
       component: () => import('../views/HomeView.vue'),
     },
     {
@@ -23,8 +25,8 @@ const router = createRouter({
       component: () => import('../views/TriviaView.vue'),
     },
     {
-      path: '/expert',
-      name: 'expert',
+      path: '/pro',
+      name: 'pro',
       component: () => import('../views/QuizView.vue'),
     },
   ],

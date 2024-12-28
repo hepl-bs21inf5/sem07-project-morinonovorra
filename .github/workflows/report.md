@@ -17,15 +17,15 @@
 
 ### <p style="color: PeachPuff;">Vue.js</p>
 
-| Temps estimé | Temps passé | Difficultés rencontrées                           | Solutions trouvées          | Explications et réflexions                                    | Suite du projet |
-| ------------ | ----------- | ------------------------------------------------- | --------------------------- | ------------------------------------------------------------- | --------------- |
-| 20 min       | 15 min      | comment cloner dépôt Git dans répertoire du cours | **git clone** dans terminal | **npm run dev** : pour lancer le projet en mode développement |
+| Temps estimé | Temps passé | Difficultés rencontrées                           | Solutions trouvées          | Explications et réflexions                                                                                                                             | Projet                             |
+| ------------ | ----------- | ------------------------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- |
+| 20 min       | 15 min      | comment cloner dépôt Git dans répertoire du cours | **git clone** dans terminal | installer les dépendances et formater le code : **npm install**, et **npm run format** ; pour lancer le projet en mode développement : **npm run dev** | créations de fichiers et du projet |
 
 ### <p style="color: PeachPuff;">Bootstrap</p>
 
-| Temps estimé | Temps passé | Difficultés rencontrées                  | Solutions trouvées                                     | Explications et réflexions                           | Projet |
-| ------------ | ----------- | ---------------------------------------- | ------------------------------------------------------ | ---------------------------------------------------- | ------ |
-| 5 min        | 10 min      | trouver pourquoi ça ne marche pas / beug | ne pas hésiter à comparer régulièrement au code source | changement de la langue et du titre de l'application |
+| Temps estimé | Temps passé | Difficultés rencontrées                  | Solutions trouvées                                     | Explications et réflexions                                                                       | Projet                                               |
+| ------------ | ----------- | ---------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
+| 5 min        | 10 min      | trouver pourquoi ça ne marche pas / beug | ne pas hésiter à comparer régulièrement au code source | isntaller Bootstrap et Boostrap Icons : **npm install bootstrap @popperjs/core bootstrap-icons** | changement de la langue et du titre de l'application |
 
 ### <p style="color: PeachPuff;">Quiz</p>
 
@@ -324,12 +324,62 @@ https://github.com/blueur/quiz/tree/week/5-final
 
 > Voici quelques idées pour améliorer le projet :
 
+résultats en pourcentage ?
+
 - **QuestionCheckbox.vue** : Sélectionner plusieurs réponses.
+  être en deux colonnes
+  > montrer nombres de points ? (env.45m)
+  > phrase différente selon nombres de points ?
+  <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
+      <p v-if="model === QuestionState.Correct" class="text-success">alors là, rien à dire ! +1</p>
+      <p v-if="correctAnswersCount === 0" class="text-danger">0 / 5, ça arrive !</p>
+      <p v-else-if="correctAnswersCount === 1" class="text-warning">1 / 5, bien essayé !</p>
+      <p v-else-if="correctAnswersCount === 2" class="text-warning">2 / 5, pas mal !</p>
+      <p v-else-if="correctAnswersCount < props.answer.length" class="text-warning">
+        {{ correctAnswersCount }} / 5, quel niveau !
+      </p>
+      <p class="blockquote-footer">{{ props.answerDetail }}</p>
+    </div>
+
+> réponses dans ordre aléatoire (Ajouter un Mélangeur pour Les Options) pour QuestionCheckbox ou (ExpertCheckbox.vue)
+
+1. dans QuestionCheckbox.vue : Étape 1 : Ajouter un Mélangeur pour Les Options
+   Nous devons mélanger les réponses à chaque chargement. Pour ce faire, ajoutez une méthode pour mélanger les options et appliquez-la à l'initialisation.
+   Code mis à jour dans setup :
+   const shuffledOptions = ref<{ value: string; text: string }[]>([])
+
+const shuffleArray = (array: { value: string; text: string }[]) => {
+return array
+.map((item) => ({ ...item, sortKey: Math.random() }))
+.sort((a, b) => a.sortKey - b.sortKey)
+.map(({ sortKey, ...item }) => item)
+}
+
+shuffledOptions.value = shuffleArray(props.options) 2. puis dans le template, remplacer **props.options** par :
+
+<div v-for="option in **shuffledOptions**" :key="option.value" class="form-check">
+  <input
+    :id="`${props.id}-${option.value}`"
+    v-model="checkedNames"
+    class="form-check-input"
+    type="checkbox"
+    :value="option.value"
+    :disabled="
+      model === QuestionState.Submit ||
+      model === QuestionState.Correct ||
+      model === QuestionState.Wrong
+    "
+  />
+  <label class="form-check-label" :for="`${props.id}-${option.value}`">
+    {{ option.text }}
+  </label>
+</div>
+
 - **QuestionSelect.vue** : Sélectionner une réponse dans une liste déroulante.
-- Accepter plusieurs réponses possibles pour **QuestionText.vue** (par exemple, "2" ou "deux").
+- Accepter plusieurs réponses possibles pour **QuestionText.vue** (par exemple, "2" ou "deux"). (env. 30min)
 - Adapter le Trivia pour pouvoir y jouer.
 - Ordre aléatoire des choix dans **QuestionRadio.vue**.
-- Ordre aléatoire des questions.
+- Ordre aléatoire des questions. (pas voulu, pour que ça corresponde au quiz pro, mais proposer code pour questions dans ordre aléatoire)
 
 > ajouter titres aux questions (afin de mieux comprendre type de réponse attendue)
 
@@ -351,9 +401,8 @@ https://github.com/blueur/quiz/tree/week/5-final
 > ajout espace entre questions afin que ce soit plus clair et lisible (dans css)
 
 .question {
-  margin-bottom: 30px; /* Ajustez la valeur pour ajouter plus d’espace */
+margin-bottom: 30px; /_ Ajustez la valeur pour ajouter plus d’espace _/
 }
-
 
 > Expliquer votre démarche pour les améliorations que vous avez choisies (vous devez pouvoir expliquer votre code afin de valider une amélioration) :
 
@@ -361,6 +410,44 @@ https://github.com/blueur/quiz/tree/week/5-final
 - Comment les avez-vous implémentées ?
 - Quels problèmes avez-vous rencontrés ?
 - Quelles améliorations pourriez-vous encore apporter ?
+
+> amélioration : ajouter plusieurs réponses valides au question text
+
+1. (ajouter une liste de réponses acceptées) dans le script dans QuestionText.vue (ou ExpertText.vue) ajouter la ligne :
+   const model = defineModel<QuestionState>()
+   const props = defineProps({
+   id: { type: String, required: true },
+   text: { type: String, required: true },
+   answer: { type: String, required: true },
+   **acceptedAnswers: { type: Array as () => string[], required: true },**
+   answerDetail: { type: String, default: '' },
+   placeholder: { type: String, default: 'veuillez saisir une réponse' },
+   })
+2. (adapter la comparaison de réponses) dans le script dans QuestionText.vue (ou ExpertText.vue) remplacer :
+   **model.value = value.value === props.answer ?** QuestionState.Correct : QuestionState.Wrong
+   par :
+   watch(model, (newModel) => {
+   if (newModel === QuestionState.Submit) {
+   **const normalizedValue = value.value?.trim().toLowerCase() || '';**
+   **const isCorrect = props.acceptedAnswers.some(**
+   **(answer) => answer.toLowerCase() === normalizedValue**
+   **);**
+   **model.value = isCorrect ? QuestionState.Correct : QuestionState.Wrong;**
+   } else if (newModel === QuestionState.Empty) {
+   value.value = null;
+   }
+   });
+   (la méthode **some** permet de parcourir efficacement toutes les réponses autorisées pour véréifier une correspondance)
+3. (adapter QuizForm.vue (ExpertForm.vue) pour fournir plusieurs réponses) dans QuizForm.vue
+   <ExpertText
+   id="danube"
+   v-model="questionStates[4]"
+   text="combien de pays d'europe sont traversés ou longés par le danube ?"
+   answer="10"
+   **:accepted-answers="['dix', '10', 'une dizaine']"**
+   answer-detail="le danube, second plus long fleuve d'europe derrière la volga, est un fleuve qui traverse ou longe dix pays d'europe : l'allemagne, l'autriche, la slovaquie, la hongrie, la croatie, la serbie, la bulgarie, la roumanie, la moldavie et l'ukraine."
+   placeholder="indice : la carte"
+   />
 
 ### Aides
 

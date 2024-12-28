@@ -55,21 +55,13 @@ watch(model, (newModel) => {
     :placeholder="props.placeholder"
   />
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
-    <p v-if="model === QuestionState.Correct" class="text-success">bravo !</p>
-    <p v-else class="text-danger">dommage ! la réponse était : {{ props.answer }}</p>
+    <p v-if="model === QuestionState.Correct" class="text-success">magnifique !</p>
+    <p v-else class="text-danger">presque ! la réponse était : {{ props.answer }}</p>
     <p class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
 </template>
 
 <style scoped>
-/*couleur texte si juste*/
-.text-success {
-  color: green !important;
-}
-</style>
-
-<style scoped>
-/*couleur texte si faux*/
 .text-danger {
   color: red !important;
 }
