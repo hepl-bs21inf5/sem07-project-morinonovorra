@@ -16,12 +16,10 @@ const props = defineProps({
 
 const checkedNames = ref<string[]>([])
 
-// Calculer le nombre de réponses correctes sélectionnées
 const correctAnswersCount = computed(
   () => checkedNames.value.filter((name) => props.answer.includes(name)).length,
 )
 
-// Déterminer si toutes les réponses sont correctes
 const allCorrect = computed(
   () =>
     props.answer.every((ans) => checkedNames.value.includes(ans)) &&
@@ -30,7 +28,6 @@ const allCorrect = computed(
 
 const shuffledOptions = ref<{ value: string; text: string }[]>([])
 
-//Ajouter un Mélangeur pour Les Options
 const shuffleArray = (array: { value: string; text: string }[]) => {
   return array
     .map((item) => ({ ...item, sortKey: Math.random() }))

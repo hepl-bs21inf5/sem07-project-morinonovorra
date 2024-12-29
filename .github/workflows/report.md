@@ -123,13 +123,21 @@ https://github.com/blueur/quiz/tree/week/1-final
 
 > Quelle est la différence entre un prop et un modèle (v-model) ?
 
+- **prop** : donnée passée d'un composant parent à un composant enfant. Dans **QuestionRadio**, une prop permet de transmettre des informations comme la question ou les options de réponse.
+
+- **v-model** : v-model est une directive de **Vue** qui crée une liaison bidirectionnelle entre une donnée du parent et une propriété dans l'enfant. Cela permet de lier, par exemple, la réponse sélectionnée dans **QuestionRadio** au parent, et de mettre à jour automatiquement la valeur lorsque l'utilisateur change sa sélection.
+
+En résumé, une **prop** est une donnée unidirectionnelle (parent → enfant), tandis que **v-model** permet une communication bidirectionnelle entre le parent et l'enfant.
+
 ### <p style="color: PeachPuff;">QuestionText</p>
 
-| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions  | Projet                                                                                    |
-| ------------ | ----------- | ----------- | --------- | --------------------------- | ----------------------------------------------------------------------------------------- |
-| 15 min       | 15 min      |             |           | nouveauté : **placeholder** | création d'un composant **QuestionText.vue** pour les questions à réponse textuelle libre |
+| Temps estimé | Temps passé                  | Difficultés                                                                                | Solutions                  | Explications et réflexions  | Projet                                                                                    |
+| ------------ | ---------------------------- | ------------------------------------------------------------------------------------------ | -------------------------- | --------------------------- | ----------------------------------------------------------------------------------------- |
+| 15 min       | 60 min (avec l'amélioration) | comment accepter plusieurs réponses possibles (par exemple, "4" ou "quatre"). (env. 30min) | :accepted-answers="[]..."" | nouveauté : **placeholder** | création d'un composant **QuestionText.vue** pour les questions à réponse textuelle libre |
 
 > Comment rendre la propriété placeholder optionnelle ?
+
+Pour rendre la propriété placeholder optionnelle dans **QuestionRadio**, il suffit de lui donner une valeur par défaut dans la définition de la **prop**. Si aucune valeur n'est fournie par le parent, la valeur par défaut sera utilisée.
 
 ### <p style="color: PeachPuff;">API</p>
 
@@ -168,8 +176,6 @@ https://github.com/blueur/quiz/tree/week/2-final
 | ------------ | ----------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 25 min       | 40 min      | comment modifier le calcul du score | ajouter une nouvelle **computed score** qui calcule le score en fonction des valeurs de **correctedAnswers** | **correctAnswers.value** est un tableau au booléens ; la méthode **filter** retourne un nouveau tableau avec les éléments qui satisfassent la condition ; la propriété **length** retourne la taille du nouveau tableau qui ne contient que des **true** | changement de la logique du calcul de score, qui se fait maintenant en temps réel (à chaque fois que l'utilisateur change sa réponse, le score est mis à jour automatiquement) |
 
-- Proposer une autre manière de calculer le score (réecrire la fonction du computed) et comparer les deux méthodes
-
 ### <p style="color: PeachPuff;">Exemple Semaine 03</p>
 
 https://hep.davidtang.ch/docs/seminaire/projet#semaine-1:~:text=https%3A//github.com/blueur/quiz/tree/week/3%2Dfinal
@@ -197,7 +203,11 @@ https://github.com/blueur/quiz/tree/week/3-final
 - model.value =
   value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
 
+Pour réécrire cette logique autrement sans l'opérateur ternaire, nous pouvons utiliser un **if** et **else** à la place du ternaire.
+
 > Comment pourrait-on réécrire autrement la logique du watch sur value ?
+
+La logique du **watch** peut aussi être réécrite avec un if dans la fonction du watch, tout comme avec le ternaire, pour faire un contrôle conditionnel plus explicite.
 
 ### <p style="color: PeachPuff;">Boutons</p>
 
@@ -223,13 +233,6 @@ https://github.com/blueur/quiz/tree/week/4-final
 | ------------ | ----------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- | -------------------------- | ------------------------------------------------------ |
 | 45 min       | 60 min      | trouver des réponses intéressantes ; ne pas enlever **answer** mais ajouter **answerDetail** aux **QuesstionText** | answerDetail : { type: String, default: "" }, |                            | affichage d'un texte explicatif de la réponse correcte |
 
-> Ajouter ce computed dans QuestionRadio.vue : - const answerText = computed<string>(
-> () =>
-> props.options.find((option) => option.value === props.answer)?.text ??
-> props.answer,
-> ); - Remplacer {{ props.answer }} par {{ answerText }} dans le template. Expliquer pourquoi on a fait ce changement ainsi que le code du computed.
-> Que se passe-t-il lorsqu'on ne met pas de valeur à answer-detail ? Est-ce satisfaisant ? Si ce n'est pas le cas, proposer une amélioration.
-
 > Dans la partie **< template >**:
 
 - **v-if** permet d'afficher une balise HTML si la condition est vraie.
@@ -241,7 +244,7 @@ https://github.com/blueur/quiz/tree/week/4-final
 
 | Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions                                                                                                                                                                   | Projet                                    |
 | ------------ | ----------- | ----------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-|              |             |             |           | comme mon quiz contient déjà beaucoup d'images et donc de couleurs, je n'ai pas voulu changer beaucoup les couleurs de la page et autres, je voulais garder quelque chose de simple et léger | changement des couleurs dans un composant |
+| 10 min       | 15 min      |             |           | comme mon quiz contient déjà beaucoup d'images et donc de couleurs, je n'ai pas voulu changer beaucoup les couleurs de la page et autres, je voulais garder quelque chose de simple et léger | changement des couleurs dans un composant |
 
 > Pour changer les couleurs dans un composant, ajouter un **< style scoped >** à la fin du fichier :
 
@@ -263,34 +266,20 @@ https://github.com/blueur/quiz/tree/week/5-final
 
 ### <p style="color: PeachPuff;">Améliorations</p>
 
-| Temps estimé | Temps passé   | Difficultés | Solutions | Explications et réflexions | Projet                                                                                                        |
-| ------------ | ------------- | ----------- | --------- | -------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| beaucoup     | beaucoup trop |             |           |                            | avec plus de temps et d'aide j'aurais bien voulu changer le système de points pour un système en pourcentages |
+| Temps estimé | Temps passé   | Difficultés                                                    | Solutions                       | Explications et réflexions | Projet                                                                                                        |
+| ------------ | ------------- | -------------------------------------------------------------- | ------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| beaucoup     | beaucoup trop | comment créer de nouvelles fonctions, ou faire des changements | internet et camarades de classe |                            | avec plus de temps et d'aide j'aurais bien voulu changer le système de points pour un système en pourcentages |
 
-> Voici quelques idées pour améliorer le projet :
+> Amélioration : apparition d'une phrase différente selon nombres de points
 
-résultats en pourcentage ?
+v-if="model === QuestionState.Correct" class="text-success">alors là, rien à dire ! +1
 
-- **QuestionCheckbox.vue** : Sélectionner plusieurs réponses.
-  être en deux colonnes
-  > montrer nombres de points ? (env.45m)
-  > phrase différente selon nombres de points ?
-  <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
-      <p v-if="model === QuestionState.Correct" class="text-success">alors là, rien à dire ! +1</p>
-      <p v-if="correctAnswersCount === 0" class="text-danger">0 / 5, ça arrive !</p>
-      <p v-else-if="correctAnswersCount === 1" class="text-warning">1 / 5, bien essayé !</p>
-      <p v-else-if="correctAnswersCount === 2" class="text-warning">2 / 5, pas mal !</p>
-      <p v-else-if="correctAnswersCount < props.answer.length" class="text-warning">
-        {{ correctAnswersCount }} / 5, quel niveau !
-      </p>
-      <p class="blockquote-footer">{{ props.answerDetail }}</p>
-    </div>
+v-else-if="correctAnswersCount === 1" class="text-warning">1 / 5, bien essayé !
+...
 
-> réponses dans ordre aléatoire (Ajouter un Mélangeur pour Les Options) pour QuestionCheckbox ou (ExpertCheckbox.vue)
+> Amélioration : ajouter un mélangeur aléatoire pour les options (pour QuestionCheckbox.vue et ExpertCheckbox.vue) :
 
-1. dans QuestionCheckbox.vue : Étape 1 : Ajouter un Mélangeur pour Les Options
-   Nous devons mélanger les réponses à chaque chargement. Pour ce faire, ajoutez une méthode pour mélanger les options et appliquez-la à l'initialisation.
-   Code mis à jour dans setup :
+1. Étape 1 : Ajouter un mélangeur pour les réponses à chaque chargement, ajouter une méthode pour mélanger les options et l'appliquer à l'initialisation :
    const shuffledOptions = ref<{ value: string; text: string }[]>([])
 
 const shuffleArray = (array: { value: string; text: string }[]) => {
@@ -300,127 +289,76 @@ return array
 .map(({ sortKey, ...item }) => item)
 }
 
-shuffledOptions.value = shuffleArray(props.options) 2. puis dans le template, remplacer **props.options** par :
+shuffledOptions.value = shuffleArray(props.options)
 
-<div v-for="option in **shuffledOptions**" :key="option.value" class="form-check">
-  <input
-    :id="`${props.id}-${option.value}`"
-    v-model="checkedNames"
-    class="form-check-input"
-    type="checkbox"
-    :value="option.value"
-    :disabled="
-      model === QuestionState.Submit ||
-      model === QuestionState.Correct ||
-      model === QuestionState.Wrong
-    "
-  />
-  <label class="form-check-label" :for="`${props.id}-${option.value}`">
-    {{ option.text }}
-  </label>
-</div>
+2. puis dans le template, remplacer **props.options** par **shuffledOptions**
 
-- **QuestionSelect.vue** : Sélectionner une réponse dans une liste déroulante.
-- Accepter plusieurs réponses possibles pour **QuestionText.vue** (par exemple, "2" ou "deux"). (env. 30min)
-- Adapter le Trivia pour pouvoir y jouer.
-- Ordre aléatoire des choix dans **QuestionRadio.vue**.
-- Ordre aléatoire des questions. (pas voulu, pour que ça corresponde au quiz pro, mais proposer code pour questions dans ordre aléatoire)
+> Amélioration : ajouter des titres aux questions (afin de mieux comprendre type de réponse attendue) dans le template (je rajoute les points afin qu'on ne le voit pas sous forme de titre)
 
-> ajouter titres aux questions (afin de mieux comprendre type de réponse attendue)
+<h.> Question 1 : Une seule réponse <./h>
 
-- <template>
-    <div class="quiz-container">
-      <form @submit="submit">
-        <div class="question">
-          <h2>Question 1 : Une seule réponse</h2>
-          <QuestionRadio
-          ...
-        answer-detail="La Terre est la planète la plus dense du système solaire."
-          />
-        </div>
-        <!-- Répétez pour chaque question -->
-      </form>
-    </div>
-  </template>
-
-> ajout espace entre questions afin que ce soit plus clair et lisible (dans css)
+> Amélioration : ajouter un espace entre les questions afin que ce soit plus clair et lisible (dans CSS)
 
 .question {
 margin-bottom: 30px; /_ Ajustez la valeur pour ajouter plus d’espace _/
 }
 
-> Expliquer votre démarche pour les améliorations que vous avez choisies (vous devez pouvoir expliquer votre code afin de valider une amélioration) :
+> Autres améliorations possibles :
 
-- Pourquoi avez-vous choisi ces améliorations ?
-- Comment les avez-vous implémentées ?
-- Quels problèmes avez-vous rencontrés ?
-- Quelles améliorations pourriez-vous encore apporter ?
+- Que les questions ne valent pas toutes le même nombre de points (par exemple QuestionRadio 1 à 3 valent 1 point, la QuestionCheckbox en vaudrait 5, 1 point par bonne réponse, et la QuestionText vaudrait 2 points, afin d'avoir un total de 10 points), cela permettrait d'être plus en accord avec la difficulté des questions
+- Je n'ai pas voulu rajouter un code pour que les questions soient dans un ordre aléatoire, comme ça le quiz relax et le quiz pro sont dans le même ordre
 
-> amélioration : ajouter plusieurs réponses valides au question text
+> Amélioration : ajouter plusieurs réponses valides au QuestionText
 
-1. (ajouter une liste de réponses acceptées) dans le script dans QuestionText.vue (ou ExpertText.vue) ajouter la ligne :
-   const model = defineModel<QuestionState>()
-   const props = defineProps({
-   id: { type: String, required: true },
-   text: { type: String, required: true },
-   answer: { type: String, required: true },
+1. Ajouter une liste de réponses acceptées dans le script dans QuestionText.vue (ou ExpertText.vue), ajouter la ligne :
    **acceptedAnswers: { type: Array as () => string[], required: true },**
-   answerDetail: { type: String, default: '' },
-   placeholder: { type: String, default: 'veuillez saisir une réponse' },
-   })
-2. (adapter la comparaison de réponses) dans le script dans QuestionText.vue (ou ExpertText.vue) remplacer :
-   **model.value = value.value === props.answer ?** QuestionState.Correct : QuestionState.Wrong
+2. Adapter la comparaison de réponses dans le script dans QuestionText.vue (ou ExpertText.vue), remplacer :
+   **model.value = value.value === props.answer ?**
    par :
-   watch(model, (newModel) => {
-   if (newModel === QuestionState.Submit) {
+
    **const normalizedValue = value.value?.trim().toLowerCase() || '';**
    **const isCorrect = props.acceptedAnswers.some(**
    **(answer) => answer.toLowerCase() === normalizedValue**
    **);**
    **model.value = isCorrect ? QuestionState.Correct : QuestionState.Wrong;**
-   } else if (newModel === QuestionState.Empty) {
-   value.value = null;
-   }
-   });
-   (la méthode **some** permet de parcourir efficacement toutes les réponses autorisées pour véréifier une correspondance)
-3. (adapter QuizForm.vue (ExpertForm.vue) pour fournir plusieurs réponses) dans QuizForm.vue
-   <ExpertText
-   id="danube"
-   v-model="questionStates[4]"
-   text="combien de pays d'europe sont traversés ou longés par le danube ?"
-   answer="10"
+
+   (la méthode **some** permet de parcourir efficacement toutes les réponses autorisées pour vérifier une correspondance)
+
+3. Adapter QuizForm.vue (ExpertForm.vue) pour fournir plusieurs réponses, dans QuizForm.vue :
    **:accepted-answers="['dix', '10', 'une dizaine']"**
-   answer-detail="le danube, second plus long fleuve d'europe derrière la volga, est un fleuve qui traverse ou longe dix pays d'europe : l'allemagne, l'autriche, la slovaquie, la hongrie, la croatie, la serbie, la bulgarie, la roumanie, la moldavie et l'ukraine."
-   placeholder="indice : la carte"
-   />
 
 ### <p style="color: PeachPuff;">Aides</p>
 
-| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
-| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
-|              |             |             |           |                            |        |
+> Exemples de changements de couleur :
 
-<p style="color: SlateGray;">Texte en gris ardoise</p>
-<p style="color: gray;">Texte en gris</p>
-<p style="color: silver;">Texte en argenté (gris clair)</p>
 <p style="color: Lavender;">Texte en lavande</p>
 <p style="color: PeachPuff;">Texte en pêche</p>
 <p style="color: LightSalmon;">Texte en saumon clair</p>
 <p style="color: LightCoral;">Texte en corail clair</p>
 <p style="color: brown;">Texte en marron</p>
-<p style="color: DarkRed;">Texte en rouge foncé</p>
 <p style="color: Olive;">Texte en vert olive</p>
-<p style="color: DarkGreen;">Texte en vert foncé</p>
 
-commentaires
-// dans le script (.vue)
-<!- --> dans le template (.vue)
+> Commentaires :
+
+**//** \*/ : dans le script (.vue) et
+**<!- -->** : dans le template (.vue)
 
 ### <p style="color: PeachPuff;">Documentations</p>
 
 - Vue.js : https://fr.vuejs.org/guide/introduction
 - Bootstrap : https://getbootstrap.com/docs/5.3/getting-started/introduction/
 - Bootstrap Icons : https://icons.getbootstrap.com/
+
+> Source des images :
+
+- europecarte.jpg : https://i.pinimg.com/736x/0a/36/5b/0a365b14e18f6fb20e52bff64c698c27.jpg
+- onu.jpg : https://i.pinimg.com/736x/67/63/a6/6763a6775d7cfbcb500d66b1b1a1d5e0.jpg
+- australie.jpg : https://i.pinimg.com/736x/09/3c/a1/093ca17dbf60d65bad4d9e831498cdc9.jpg
+- densite_planetes.jpg : https://i.pinimg.com/736x/2a/19/e9/2a19e9e53280c4d258b8fd2022bcde34.jpg
+- kazakhstan : https://i.pinimg.com/736x/b3/78/2e/b3782e9d070fe3b57d2aa4525718488a.jpg
+- nuit_etoilee : https://i.pinimg.com/736x/4a/9c/fd/4a9cfdec861d304d61a40b06a402fe7f.jpg
+- volcan : https://i.pinimg.com/736x/73/4b/ff/734bff48755b6ba0e8a2513d03ed5caa.jpg
+- ordre_planetes : https://i.pinimg.com/736x/b1/ed/42/b1ed42a0099d9bf0548d149a50b74653.jpg
 
 ### <p style="color: PeachPuff;">Vérification</p>
 

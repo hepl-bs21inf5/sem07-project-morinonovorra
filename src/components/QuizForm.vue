@@ -6,11 +6,11 @@ import QuestionText from '@/components/QuestionText.vue'
 import QuestionCheckbox from './QuestionCheckbox.vue'
 
 const questionStates = ref<QuestionState[]>([
-  QuestionState.Empty, // Question 1
-  QuestionState.Empty, // Question 2
-  QuestionState.Empty, // Question 3
-  QuestionState.Empty, // Question 4
-  QuestionState.Empty, // Question Checkbox
+  QuestionState.Empty,
+  QuestionState.Empty,
+  QuestionState.Empty,
+  QuestionState.Empty,
+  QuestionState.Empty,
 ])
 
 //vérifie si toutes les questions sont remplies
@@ -45,7 +45,7 @@ function reset(event: Event): void {
 </script>
 
 <template>
-  <div class="quiz-container" >
+  <div class="quiz-container">
     <form @submit="submit">
       <div class="question">
         <h5>question 1 : sciences</h5>
@@ -158,7 +158,6 @@ function reset(event: Event): void {
         <p v-else-if="totalScore - score === 1">presque un sans-faute, t'es sur la bonne voie !</p>
         <p v-else>oups, on a vu mieux !</p>
       </div>
-      <!--<div>résultats : {{ questionStates }}</div>-->
     </form>
   </div>
 </template>

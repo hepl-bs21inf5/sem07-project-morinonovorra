@@ -6,11 +6,11 @@ import ExpertText from '@/components/QuestionText.vue'
 import ExpertCheckbox from './ExpertCheckbox.vue'
 
 const questionStates = ref<QuestionState[]>([
-  QuestionState.Empty, // Question 1
-  QuestionState.Empty, // Question 2
-  QuestionState.Empty, // Question 3
-  QuestionState.Empty, // Question 4
-  QuestionState.Empty, // Question Checkbox
+  QuestionState.Empty,
+  QuestionState.Empty,
+  QuestionState.Empty,
+  QuestionState.Empty,
+  QuestionState.Empty,
 ])
 
 const filled = computed<boolean>(() =>
@@ -153,7 +153,6 @@ function reset(event: Event): void {
         <p v-else-if="totalScore - score === 1">une petite erreur, mais tu assures !</p>
         <p v-else>oups, ça arrive aussi aux meilleurs !</p>
       </div>
-      <!--<div>Debug états : {{ questionStates }}</div>-->
     </form>
   </div>
 </template>

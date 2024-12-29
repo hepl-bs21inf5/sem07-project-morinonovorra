@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import QuestionRadio from "@/components/QuestionRadio.vue"
 import { QuestionState } from '@/models'
 import { reactive, computed, ref } from 'vue'
 
@@ -67,7 +68,9 @@ fetch('https://opentdb.com/api.php?amount=10&type=multiple')
           })),
         ]"
       />
-      <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">terminer</button>
+      <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">
+        terminer
+      </button>
       &nbsp;
 
       <button class="btn btn-secondary" @click="reset">réinitialiser</button>

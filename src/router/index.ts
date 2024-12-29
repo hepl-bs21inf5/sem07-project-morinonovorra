@@ -13,9 +13,6 @@ const router = createRouter({
     {
       path: '/projet',
       name: 'projet',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: AboutView,
     },
     {
@@ -30,7 +27,7 @@ const router = createRouter({
     },
     {
       path: '/',
-      redirect: '/projet', // Redirection par défaut vers la page "À propos"
+      redirect: '/projet', // redirection par défaut vers la page "à propos"
     },
   ],
 })

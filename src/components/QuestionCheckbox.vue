@@ -16,19 +16,19 @@ const props = defineProps({
 
 const checkedNames = ref<string[]>([])
 
-// Calculer le nombre de réponses correctes sélectionnées
+// calcule le nombre de réponses correctes sélectionnées
 const correctAnswersCount = computed(
   () => checkedNames.value.filter((name) => props.answer.includes(name)).length,
 )
 
-// Déterminer si toutes les réponses sont correctes
+// détermine si toutes les réponses sont correctes
 const allCorrect = computed(
   () =>
     props.answer.every((ans) => checkedNames.value.includes(ans)) &&
     props.answer.length === checkedNames.value.length,
 )
 
-//Nous devons mélanger les réponses à chaque chargement. Pour ce faire, ajoutez une méthode pour mélanger les options et appliquez-la à l'initialisation.
+//mélange les réponses à chaque chargement (en ajoutant une méthode pour mélanger les options et en l'appliquez)
 const shuffledOptions = ref<{ value: string; text: string }[]>([])
 const shuffleArray = (array: { value: string; text: string }[]) => {
   return array
@@ -86,7 +86,7 @@ watch(model, (newModel) => {
 
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
     <p v-if="model === QuestionState.Correct" class="text-success">wow ! +1 bien mérité</p>
-    <p v-if="correctAnswersCount === 0" class="text-danger">0 / 5, oups ! </p>
+    <p v-if="correctAnswersCount === 0" class="text-danger">0 / 5, oups !</p>
     <p v-else-if="correctAnswersCount === 1" class="text-warning">1 / 5, bon début !</p>
     <p v-else-if="correctAnswersCount < props.answer.length" class="text-warning">
       {{ correctAnswersCount }} / 5, way to go !

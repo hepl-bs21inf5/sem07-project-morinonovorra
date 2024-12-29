@@ -39,11 +39,8 @@
   margin-bottom: 30px;
 }
 
-
-
 .question-image {
   display: block;
-  /*margin: 10px auto;  Centrez l'image (10= tout à gauche, 30=centre)*/
-  max-width: 50%; /* Adaptez l'image à la taille du conteneur */
+  max-width: 50%;
   height: auto;
 }
