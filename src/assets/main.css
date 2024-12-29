@@ -1,0 +1,46 @@
+/* https://getbootstrap.com/docs/5.3/components/buttons/#variables */
+
+.btn-primary {
+  margin-right: 20px;
+  --bs-btn-color: #fff;
+  --bs-btn-bg: green;
+  --bs-btn-border-color: #0d6efd;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: rgba(0, 128, 0, 0.5);
+  --bs-btn-hover-border-color: #0a58ca;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #0a58ca;
+  --bs-btn-active-border-color: #0a53be;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: green; /*couleur avant début du jeu*/
+  --bs-btn-disabled-border-color: #0d6efd;
+}
+.btn-secondary {
+  --bs-btn-color: #ffffff; /*couleur de l'écriture*/
+  --bs-btn-bg: orange; /*fond du bouton*/
+  --bs-btn-border-color: #0d6efd; /*contour du bouton*/
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: rgba(255, 166, 0, 0.5);
+  --bs-btn-hover-border-color: #0a58ca;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #0a58ca;
+  --bs-btn-active-border-color: #0a53be;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #0d6efd;
+  --bs-btn-disabled-border-color: #0d6efd;
+}
+
+/*espace entre questions*/
+.question {
+  margin-bottom: 30px;
+}
+
+.question-image {
+  display: block;
+  max-width: 50%;
+  height: auto;
+}
