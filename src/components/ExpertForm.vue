@@ -57,7 +57,7 @@ function reset(event: Event): void {
             { value: 'terre', text: 'terre' },
           ]"
           answer="terre"
-          answer-detail="la terre est la planète la plus dense du système solaire, avec une densité moyenne d'environ 5,52 g/cm3."
+          answer-detail="la terre est composée d'un noyau métallique massif qui représente environ 32% de sa masse totale, ce qui explique sa densité exceptionnelle ; de plus, les planètes gazeuse, bien qui gigantesques, sont beaucoup moins denses que la terre à cause de leur composition essentiellement faite d'hydrogène et d'hélium"
         />
       </div>
     </form>
@@ -68,7 +68,7 @@ function reset(event: Event): void {
         <ExpertRadio
           id="oeuvre"
           v-model="questionStates[1]"
-          text="Quelle est la seule oeuvre à avoir été traduite dans toutes les langues officielles de l'onu ?"
+          text="quelle est la seule oeuvre à avoir été traduite dans toutes les langues officielles de l'onu ?"
           :options="[
             { value: 'le petit prince', text: 'le petit prince' },
             { value: 'les misérables', text: 'les misérables' },
@@ -76,7 +76,7 @@ function reset(event: Event): void {
             { value: 'harry potter', text: 'harry potter' },
           ]"
           answer="le petit prince"
-          answer-detail="'le petit prince' d'antoine de saint-exupéry a été traduit dans toutes les langues officielles de l'onu."
+          answer-detail="avec plus de 500 traductions, 'le petit prince' est un phénomène littéraire mondial, souvent utilisé pour enseigner des valeurs universelles comme l'amitié et la curiosité ; le message intemporel du livre - voir avec le coeur plutôt qu'avec les yeux - trouve un écho particulier dans un monde de plus en plus technologique"
         />
       </div>
     </form>
@@ -95,7 +95,7 @@ function reset(event: Event): void {
             { value: 'achgabat', text: 'achgabat' },
           ]"
           answer="astana"
-          answer-detail="astana est connue pour son architecture futuriste, symbole du développement rapide du pays, et elle a remplacé almaty comme capitale en 1997 pour des raisons stratégiques et géographiques ; tachkent est la capitale de l'ouzbékistan, et achgabat du turkménistan."
+          answer-detail="astana, autrefois appelée nur-sultan, est un exemple de mégapole moderne surgie de nulle part, sa transformation rapide illustre l'ambition économique et politique du kazakhstan ; parmi ses bâtiments célèbres, on trouve le palais de la paix et de la réconciliation, une pyramide futuriste qui reflète la diversité religieuse et culturelle du pays"
         />
       </div>
     </form>
@@ -118,7 +118,7 @@ function reset(event: Event): void {
             { value: 'irak', text: 'irak' },
           ]"
           :answer="['russie', 'kazakhstan', 'iran', 'azerbaïdjan', 'turkménistan']"
-          answer-detail="la mer caspienne, alimentée principalement par la volga, est bordée par cinq pays : la russie, le kazakhstan, l'iran, l'azerbaïdjan et le turkménistan ; la turquie et l'ouzbékistan n'y ont pas d'accès direct."
+          answer-detail="la mer caspienne est unique : à mi-chemin entre un lac et une mer, elle contient environ 40% de l'eau salée de surface du monde ; elle est bordée par des pays aux ressources naturelles abondantes (russie, kazakhstan, iran, azerbaïdjan et turkménistan), notamment du pétrole et d ugaz, ce qui en fait un région clé sur le plan géopolitique"
         />
       </div>
     </form>
@@ -132,17 +132,17 @@ function reset(event: Event): void {
           text="combien de pays d'europe sont traversés ou longés par le danube ?"
           answer="10"
           :accepted-answers="['dix', '10', 'une dizaine']"
-          answer-detail="le danube, second plus long fleuve d'europe derrière la volga, est un fleuve qui traverse ou longe dix pays d'europe : l'allemagne, l'autriche, la slovaquie, la hongrie, la croatie, la serbie, la bulgarie, la roumanie, la moldavie et l'ukraine."
+          answer-detail="le danube, second plus long fleuve d'europe derrière la volga, est un fleuve qui traverse ou longe dix pays d'europe : allemagne, autriche, slovaquie, hongrie, croatie, serbie, bulgarie, roumanie, moldavie et ukraine ; il traverse des capitales comme vienne, bratislava, budapest et belgrade, reflétant la diversité culture de l'europre centrale et orientale"
           placeholder="indice : la carte"
         />
       </div>
       <br />
       <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">
-        Terminer
+        terminer
       </button>
       &nbsp;
 
-      <button class="btn btn-secondary" @click="reset">Réinitialiser</button>
+      <button class="btn btn-secondary" @click="reset">réinitialiser</button>
       <div v-if="submitted">
         <p>votre score est de : {{ score }} / {{ totalScore }}</p>
         <p v-if="score === totalScore" class="congratulations">score parfait, impressionnant !</p>

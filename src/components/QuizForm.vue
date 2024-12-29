@@ -45,7 +45,7 @@ function reset(event: Event): void {
 </script>
 
 <template>
-  <div class="quiz-container">
+  <div class="quiz-container" >
     <form @submit="submit">
       <div class="question">
         <h5>question 1 : sciences</h5>
@@ -61,7 +61,7 @@ function reset(event: Event): void {
             { value: 'neptune', text: 'neptune' },
           ]"
           answer="jupiter"
-          answer-detail="petit mémo-technique (regarder la première lettre de chaque mot) : monsieur vous travaillez mal, je suis un nigaud."
+          answer-detail="en astronomie, la terre est souvent appelée la 'zone habitable', car elle se trouve à la distance idéale pour maintenir de l'eau liquide - un prérequis pour la vie telle que nous la connaissons"
         />
       </div>
     </form>
@@ -80,7 +80,7 @@ function reset(event: Event): void {
             { value: 'edvard munch', text: 'edvard munch' },
           ]"
           answer="vincent van gogh"
-          answer-detail="cette oeuvre, peinte en 1889, est l'une des plus célèbres de van gogh ; elle représente un paysage nocturne avec des étoiles tournoyantes, un exemple de son style post-impressionniste unique."
+          answer-detail="peinte en 1889, cette oeuvre montre comment van gogh était capable de transmuter sa souffrance en art universel ; ironiquement, il ne considérait pas cette toile comme une réussite majeure"
         />
       </div>
     </form>
@@ -99,7 +99,7 @@ function reset(event: Event): void {
             { value: 'canberra', text: 'canberra' },
           ]"
           answer="canberra"
-          answer-detail="cette ville a été choisie en 1908 comme compromis entre les deux grandes rivales, sydney et melbourne"
+          answer-detail="contrairement à la plupart des capitales, canberra n'est ni la plus grande ni la plus ancienne ville d'australie ; elle est une curiosité politique, choisie pour apaiser la rivalité entre sydney et melbourne"
         />
       </div>
     </form>
@@ -122,7 +122,7 @@ function reset(event: Event): void {
             { value: 'hongrie', text: 'hongrie' },
           ]"
           :answer="['republique tcheque', 'ukraine', 'autriche', 'pologne', 'hongrie']"
-          answer-detail="la slovaquie ...."
+          answer-detail="la slovaquie partage avec ses voisins (république tchèque, ukraine, autriche, pologne et hongrie) une histoire compliqueé : elle a été partie intégrante de la tchécoslovaquie jusqu'en 1993 et était sous domination austro-hongroise avant cela"
         />
       </div>
     </form>
@@ -136,18 +136,18 @@ function reset(event: Event): void {
           text="quel est le pays qui possède le plus de volcans actifs ?"
           answer="indonésie"
           :accepted-answers="['indonésie', 'indonesia', 'Indonésie', 'Indonesie', 'Indonesia']"
-          answer-detail="l'indonésie, avec plus de 130 volcans actifs, se trouve sur la ceinture de feu du pacifique, une région où l'activité tectonique est intense."
+          answer-detail="avec plus de 130 volcans actifs, l'indonésie est une zone volcanique majeure ; en effet le pays se trouve ssur la ceinture de feu du pacifique, où les plaques tectoniques s'entrechoquent, créant des volcans, des séismes et des tsunamis"
           placeholder="indice : la carte"
         />
       </div>
 
       <br />
       <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">
-        Terminer
+        terminer
       </button>
       &nbsp;
 
-      <button class="btn btn-secondary" @click="reset">Réinitialiser</button>
+      <button class="btn btn-secondary" @click="reset">réinitialiser</button>
       <div v-if="submitted">
         <p>votre score est de : {{ score }} / {{ totalScore }}</p>
         <p v-if="score === totalScore" class="congratulations">c'est un sans-faute, chapeau !</p>

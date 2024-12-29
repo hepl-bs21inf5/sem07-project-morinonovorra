@@ -86,7 +86,7 @@ watch(model, (newModel) => {
 
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
     <p v-if="model === QuestionState.Correct" class="text-success">wow ! +1 bien mérité</p>
-    <p v-if="correctAnswersCount === 0" class="text-danger">0 / 5, oups !</p>
+    <p v-if="correctAnswersCount === 0" class="text-danger">0 / 5, oups ! </p>
     <p v-else-if="correctAnswersCount === 1" class="text-warning">1 / 5, bon début !</p>
     <p v-else-if="correctAnswersCount < props.answer.length" class="text-warning">
       {{ correctAnswersCount }} / 5, way to go !

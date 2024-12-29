@@ -1,7 +1,7 @@
 # <p style="color: brown;">BS21INF5 - Projet 2024 - Marina Navarro</p>
 
 - Objectifs : Faire un projet avec **Vue.js**.
-- Rendu le 26 décembre 2024 à 23h59
+- Rendu le 29 décembre 2024 à 23h59
 
 ### <p style="color: PeachPuff;">Journal de bord</p>
 
@@ -13,10 +13,6 @@
   - Explications et réflextions sur le code (questions pour nous guider chaque semaine)
   - Suite du projet (que pourrait-on faire pour la suite du projet ?)
 
-commentaires
-// dans le script (.vue)
-<!- --> dans le template (.vue)
-
 ## <p style="color: LightCoral;">Projet 01 - Semaine 07 (07.11 - 13.11) : Application Web</p>
 
 ### <p style="color: PeachPuff;">Vue.js</p>
@@ -27,46 +23,15 @@ commentaires
 
 ### <p style="color: PeachPuff;">Bootstrap</p>
 
-| Temps estimé | Temps passé | Difficultés                              | Solutions                                              | Explications et réflexions                                                                       | Projet                                               |
-| ------------ | ----------- | ---------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
-| 5 min        | 10 min      | trouver pourquoi ça ne marche pas / beug | ne pas hésiter à comparer régulièrement au code source | isntaller Bootstrap et Boostrap Icons : **npm install bootstrap @popperjs/core bootstrap-icons** | changement de la langue et du titre de l'application |
+| Temps estimé | Temps passé | Difficultés                              | Solutions                                                                                                                                           | Explications et réflexions                                                                       | Projet                                               |
+| ------------ | ----------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
+| 5 min        | 10 min      | trouver pourquoi ça ne marche pas / beug | ne pas hésiter à comparer régulièrement au code source ; pour changer les icones dans la bar de navigation avec boostrap : : i class="bi bi-puzzle" | isntaller Bootstrap et Boostrap Icons : **npm install bootstrap @popperjs/core bootstrap-icons** | changement de la langue et du titre de l'application |
 
 ### <p style="color: PeachPuff;">Quiz</p>
 
-| Temps estimé | Temps passé | Difficultés                                                                   | Solutions | Explications et réflexions | Projet                                                                                                           |
-| ------------ | ----------- | ----------------------------------------------------------------------------- | --------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| 10 min       | 30 min      | afficher score final et message de félicitations si le score est parfait !!!! |           |                            | ajout de questions, bouton de réinitialisation, modification de la couleur du bouton et les icônes de navigation |
-
-pour ajouter message de félicitations si le score est parfait : (dans QuizForm.vue)
-
-<div v-if="submitted">
-      <p>Votre score est de : {{ score }} / {{ totalScore }}</p>
-      <!-- Message de félicitations si le score est parfait -->
-      <p v-if="score === totalScore" class="congratulations">
-        Félicitations, vous avez un score parfait ! 🎉
-      </p>
-      <!-- Message générique si le score n'est pas parfait -->
-      <p v-else>
-        Essayez encore pour améliorer votre score.
-      </p>
-    </div>
-
-<div v-if="submitted">
-        <p>votre score est de : {{ score }} / {{ totalScore }}</p>
-        <p v-if="score === totalScore" class="congratulations">c'est un sans-faute, chapeau !</p>
-        <p v-else-if="score === 1">au moins un de bon, c'est un début !</p>
-        <p v-else-if="totalScore - score >= 2 && totalScore - score <= 4">
-          pas mal, mais il reste du boulot !
-        </p>
-        <p v-else-if="totalScore - score === 1">presque un sans-faute, t'es sur la bonne voie !</p>
-        <p v-else>oups, on a vu mieux !</p>
-      </div>
-
-pour changer les icones dans la bar de navigation avec boostrap :
-<RouterLink class="nav-link" to="/relax">
-<i class="bi bi-puzzle"></i> <-----ici
-quiz relax
-</RouterLink>
+| Temps estimé | Temps passé | Difficultés                                                              | Solutions                                                                                              | Explications et réflexions | Projet                                                                                                           |
+| ------------ | ----------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| 10 min       | 30 min      | afficher score final et message de félicitations si le score est parfait | Votre score est de : {{ score }} / {{ totalScore }} ; v-if="score === totalScore" , v-else-if , v-else |                            | ajout de questions, bouton de réinitialisation, modification de la couleur du bouton et les icônes de navigation |
 
 ### <p style="color: PeachPuff;">Questions</p>
 
@@ -137,7 +102,7 @@ https://github.com/blueur/quiz/tree/week/1-final
 
 | Temps estimé | Temps passé | Difficultés                                                      | Solutions                                                   | Explications et réflexions | Projet                                                                                                                               |
 | ------------ | ----------- | ---------------------------------------------------------------- | ----------------------------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-|              |             | ne pas oublier d'importer le nouveau composant dans QuizForm.vue | import QuestionRadio from "@/components/QuestionRadio.vue"; |                            | remplacer chaque question par un composant **QuestionRadio** (afin d'éviter de devoir répéter les mêmes étapes pour chaque question) |
+| 15 min       | 25 min      | ne pas oublier d'importer le nouveau composant dans QuizForm.vue | import QuestionRadio from "@/components/QuestionRadio.vue"; |                            | remplacer chaque question par un composant **QuestionRadio** (afin d'éviter de devoir répéter les mêmes étapes pour chaque question) |
 
 > Propriétés du composant **QuestionRadio** :
 
@@ -162,7 +127,7 @@ https://github.com/blueur/quiz/tree/week/1-final
 
 | Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions  | Projet                                                                                    |
 | ------------ | ----------- | ----------- | --------- | --------------------------- | ----------------------------------------------------------------------------------------- |
-|              |             |             |           | nouveauté : **placeholder** | création d'un composant **QuestionText.vue** pour les questions à réponse textuelle libre |
+| 15 min       | 15 min      |             |           | nouveauté : **placeholder** | création d'un composant **QuestionText.vue** pour les questions à réponse textuelle libre |
 
 > Comment rendre la propriété placeholder optionnelle ?
 
@@ -170,7 +135,7 @@ https://github.com/blueur/quiz/tree/week/1-final
 
 | Temps estimé | Temps passé | Difficultés               | Solutions                                                                                                                                                                                                                                                                                                   | Explications et réflexions                                                                            | Projet                                                                                                                                                 |
 | ------------ | ----------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|              |             | créer les chemins / liens | ajouter une nouvelle tap **Trivia** dans **App.vue** ; créer une nouvelle vue **TriviaView.vue** dans le dossier **src/views** ; mettre à jour le fichier **router/index.ts** en ajoutant une nouvelle route ; puis finalement ajouter le composant **QuizTrivia.vue** dans le dossier **src/components** : | **amount** : le nombre de questions à obtenir ; **type** : le type de questions (multiple ou boolean) | Utilisation d'une API (Open Trivia Database) pour obtenir des questions aléatoires pour notre quiz (en faisant une requête HTTP GET à l'URL suivante : |
+| 20 min       | 30 min      | créer les chemins / liens | ajouter une nouvelle tap **Trivia** dans **App.vue** ; créer une nouvelle vue **TriviaView.vue** dans le dossier **src/views** ; mettre à jour le fichier **router/index.ts** en ajoutant une nouvelle route ; puis finalement ajouter le composant **QuizTrivia.vue** dans le dossier **src/components** : | **amount** : le nombre de questions à obtenir ; **type** : le type de questions (multiple ou boolean) | Utilisation d'une API (Open Trivia Database) pour obtenir des questions aléatoires pour notre quiz (en faisant une requête HTTP GET à l'URL suivante : |
 
 https://opentdb.com/api.php?amount=10&type=multiple)
 
@@ -180,7 +145,7 @@ https://opentdb.com/api.php?amount=10&type=multiple)
 
 | Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions                                                                    | Projet                                                                        |
 | ------------ | ----------- | ----------- | --------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-|              |             |             |           | Noter que comme la réponse est une liste, il faut initialiser la **ref** avec une liste vide. | Les checkboxes sont comme les radios, mais on peut en sélectionner plusieurs. |
+| 5 min        | 15 min      |             |           | Noter que comme la réponse est une liste, il faut initialiser la **ref** avec une liste vide. | Les checkboxes sont comme les radios, mais on peut en sélectionner plusieurs. |
 
 ### <p style="color: PeachPuff;">Exemple Semaine 02</p>
 
@@ -190,18 +155,18 @@ https://github.com/blueur/quiz/tree/week/2-final
 
 ### <p style="color: PeachPuff;">Réponse</p>
 
-| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
-| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
-|              |             |             |           |                            |  incorporer la vérification de la réponse dans chaque composant de question (car elle est spécifique à chaque type de question)      |
+| Temps estimé | Temps passé | Difficultés                                      | Solutions                                                                                                                                                                                                   | Explications et réflexions | Projet                                                                                                                                             |
+| ------------ | ----------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 25 min       | 30 min      | quelle modication faire et dans quel composant ? | Dans le template, modifier le modifier la partie **script** de **QuestionRadio.vue** ; et ajouter une nouvelle **ref** **correctAnswers** pour stocker l'exactitude de chaque réponse dans **QuizForm.vue** |                            | incorporer la vérification de la réponse dans chaque composant de question (car elle est spécifique à chaque type de question) ; nettoyage du code |
 
 - À quoi sert l'option immediate: true dans le watch ?
 - Que se passe-t-il si on l'enlève ou si on met immediate: false ?
 
 ### <p style="color: PeachPuff;">Score</p>
 
-| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
-| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
-|              |             |             |           |                            |        |
+| Temps estimé | Temps passé | Difficultés                         | Solutions                                                                                                    | Explications et réflexions                                                                                                                                                                                                                               | Projet                                                                                                                                                                         |
+| ------------ | ----------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 25 min       | 40 min      | comment modifier le calcul du score | ajouter une nouvelle **computed score** qui calcule le score en fonction des valeurs de **correctedAnswers** | **correctAnswers.value** est un tableau au booléens ; la méthode **filter** retourne un nouveau tableau avec les éléments qui satisfassent la condition ; la propriété **length** retourne la taille du nouveau tableau qui ne contient que des **true** | changement de la logique du calcul de score, qui se fait maintenant en temps réel (à chaque fois que l'utilisateur change sa réponse, le score est mis à jour automatiquement) |
 
 - Proposer une autre manière de calculer le score (réecrire la fonction du computed) et comparer les deux méthodes
 
@@ -215,14 +180,9 @@ https://github.com/blueur/quiz/tree/week/3-final
 
 ### <p style="color: PeachPuff;">États</p>
 
-| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions                                                                            | Projet |
-| ------------ | ----------- | ----------- | --------- | ----------------------------------------------------------------------------------------------------- | ------ |
-|              |             |             |           | enum (type énuméré) est un type qui peut prendre une valeur parmi un ensemble de valeurs pré-définies |
-
-temps estimé : 45m
-temps passé : 60m
-difficultés rencontrées : code donné pour seulement 3 questions, comment donner la valeur de la quatrième question ?
-solutions trouvées : regardé la partie du code en question, compris que les numéros allaient dans l'ordre de 0 à 2, rajouté 3
+| Temps estimé | Temps passé | Difficultés                                                                                    | Solutions                                                                             | Explications et réflexions                                                                                                                                           | Projet                                                                                                                                                      |
+| ------------ | ----------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 45 min       | 60 min      | code donné pour seulement trois questions, comment donner la valeur de la quatrième question ? | regarder la partie du code concernée, comprendre la logique des numéros et de l'ordre | enum (type énuméré) est un type qui peut prendre une valeur parmi un ensemble de valeurs pré-définies ; **export** permet d'importer cet enum dans d'autres fichiers | changement de noms (**correctAnswers** en **QuestionState**) et adaptation du calcul du score ; ajout de **div** pour afficher les états de chaque question |
 
 > États possibles :
 
@@ -232,34 +192,24 @@ solutions trouvées : regardé la partie du code en question, compris que les nu
 - Correct : la réponse est juste
 - Wrong : la réponse est fausse
 
-- Un **enum (type énuméré)** est un type qui peut prendre une valeur parmi un ensemble de valeurs pré-définies.
-- On crée un enum **QuestionState** qui contient les états possibles pour une question.
-- **export** permet d'importer cet enum dans d'autres fichiers.
+> Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?
 
-- Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?
+- model.value =
+  value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
 
-  - model.value =
-    value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
-
-- Comment pourrait-on réécrire autrement la logique du watch sur value ?
+> Comment pourrait-on réécrire autrement la logique du watch sur value ?
 
 ### <p style="color: PeachPuff;">Boutons</p>
 
-| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
-| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
-|              |             |             |           |                            |        |
-
-temps estimé : 10m
-temps passé : 15m
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet                                                                              |
+| ------------ | ----------- | ----------- | --------- | -------------------------- | ----------------------------------------------------------------------------------- |
+| 10 min       | 15 min      |             |           |                            | affichage du score uniquement si toutes les questions ont été soumises et corrigées |
 
 ### <p style="color: PeachPuff;">Réponses immuables (non modifiables)</p>
 
-| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
-| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
-|              |             |             |           |                            |        |
-
-temps estimé : 10m
-temps passé : 5m
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet                                                                                         |
+| ------------ | ----------- | ----------- | --------- | -------------------------- | ---------------------------------------------------------------------------------------------- |
+| 10 min       | 5 min       |             |           |                            | transformation des réponses en réponses immuables (non modifiables) après avoir soumis le quiz |
 
 ### <p style="color: PeachPuff;">Exemple</p>
 
@@ -269,17 +219,16 @@ https://github.com/blueur/quiz/tree/week/4-final
 
 ### <p style="color: PeachPuff;">Réponse détaillée</p>
 
-| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
-| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
-|              |             |             |           |                            |        |
+| Temps estimé | Temps passé | Difficultés                                                                                                        | Solutions                                     | Explications et réflexions | Projet                                                 |
+| ------------ | ----------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- | -------------------------- | ------------------------------------------------------ |
+| 45 min       | 60 min      | trouver des réponses intéressantes ; ne pas enlever **answer** mais ajouter **answerDetail** aux **QuesstionText** | answerDetail : { type: String, default: "" }, |                            | affichage d'un texte explicatif de la réponse correcte |
 
-- Ajouter ce computed dans QuestionRadio.vue : - const answerText = computed<string>(
-  () =>
-  props.options.find((option) => option.value === props.answer)?.text ??
-  props.answer,
-  ); - Remplacer {{ props.answer }} par {{ answerText }} dans le template. Expliquer pourquoi on a fait ce changement ainsi que le code du computed.
-
-- Que se passe-t-il lorsqu'on ne met pas de valeur à answer-detail ? Est-ce satisfaisant ? Si ce n'est pas le cas, proposer une amélioration.
+> Ajouter ce computed dans QuestionRadio.vue : - const answerText = computed<string>(
+> () =>
+> props.options.find((option) => option.value === props.answer)?.text ??
+> props.answer,
+> ); - Remplacer {{ props.answer }} par {{ answerText }} dans le template. Expliquer pourquoi on a fait ce changement ainsi que le code du computed.
+> Que se passe-t-il lorsqu'on ne met pas de valeur à answer-detail ? Est-ce satisfaisant ? Si ce n'est pas le cas, proposer une amélioration.
 
 > Dans la partie **< template >**:
 
@@ -290,9 +239,9 @@ https://github.com/blueur/quiz/tree/week/4-final
 
 ### <p style="color: PeachPuff;">Style</p>
 
-| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
-| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
-|              |             |             |           |                            |        |
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions                                                                                                                                                                   | Projet                                    |
+| ------------ | ----------- | ----------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+|              |             |             |           | comme mon quiz contient déjà beaucoup d'images et donc de couleurs, je n'ai pas voulu changer beaucoup les couleurs de la page et autres, je voulais garder quelque chose de simple et léger | changement des couleurs dans un composant |
 
 > Pour changer les couleurs dans un composant, ajouter un **< style scoped >** à la fin du fichier :
 
@@ -308,15 +257,15 @@ https://github.com/blueur/quiz/tree/week/5-final
 
 ### <p style="color: PeachPuff;">Déploiement</p>
 
-| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
-| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
-|              |             |             |           |                            |        |
+| Temps estimé | Temps passé | Difficultés                                                             | Solutions              | Explications et réflexions | Projet                                 |
+| ------------ | ----------- | ----------------------------------------------------------------------- | ---------------------- | -------------------------- | -------------------------------------- |
+| 10 min       | 20 min      | difficile pour moi de comprendre cette partie de déploiement sur GitHug | bien suivre les étapes |                            | publication du projet sur GitHub Pages |
 
 ### <p style="color: PeachPuff;">Améliorations</p>
 
-| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
-| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
-|              |             |             |           |                            |        |
+| Temps estimé | Temps passé   | Difficultés | Solutions | Explications et réflexions | Projet                                                                                                        |
+| ------------ | ------------- | ----------- | --------- | -------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| beaucoup     | beaucoup trop |             |           |                            | avec plus de temps et d'aide j'aurais bien voulu changer le système de points pour un système en pourcentages |
 
 > Voici quelques idées pour améliorer le projet :
 
@@ -462,6 +411,10 @@ margin-bottom: 30px; /_ Ajustez la valeur pour ajouter plus d’espace _/
 <p style="color: DarkRed;">Texte en rouge foncé</p>
 <p style="color: Olive;">Texte en vert olive</p>
 <p style="color: DarkGreen;">Texte en vert foncé</p>
+
+commentaires
+// dans le script (.vue)
+<!- --> dans le template (.vue)
 
 ### <p style="color: PeachPuff;">Documentations</p>
 

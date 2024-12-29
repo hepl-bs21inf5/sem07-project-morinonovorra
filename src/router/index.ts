@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import QuizView from '../views/QuizView.vue'
+import AboutView from '../views/AboutView.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -17,7 +16,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      component: AboutView,
     },
     {
       path: '/trivia',
@@ -28,6 +27,10 @@ const router = createRouter({
       path: '/pro',
       name: 'pro',
       component: () => import('../views/QuizView.vue'),
+    },
+    {
+      path: '/',
+      redirect: '/projet', // Redirection par défaut vers la page "À propos"
     },
   ],
 })

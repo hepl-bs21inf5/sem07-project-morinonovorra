@@ -20,6 +20,20 @@ const answerText = computed<string>(
   () => props.options.find((option) => option.value === props.answer)?.text ?? props.answer,
 )
 
+// Fonction pour mélanger les options
+const shuffleArray = (array: { value: string; text: string }[]) => {
+  return array
+    .map((item) => ({ ...item, sortKey: Math.random() }))
+    .sort((a, b) => a.sortKey - b.sortKey)
+    .map(({ sortKey, ...item }) => item)
+}
+
+// Propriété réactive pour les options mélangées
+const shuffledOptions = ref<{ value: string; text: string }[]>([])
+
+// Mélangez les options à l'initialisation
+shuffledOptions.value = shuffleArray(props.options)
+
 watch(
   value,
   (newValue) => {
@@ -43,7 +57,7 @@ watch(model, (newModel) => {
 
 <template>
   {{ props.text }}
-  <div v-for="option in props.options" :key="option.value" class="form-check">
+  <div v-for="option in shuffledOptions" :key="option.value" class="form-check">
     <input
       :id="`${props.id}-${option.value}`"
       v-model="value"
@@ -63,7 +77,7 @@ watch(model, (newModel) => {
   </div>
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
     <p v-if="model === QuestionState.Correct" class="text-success">bien joué ! +1</p>
-    <p v-else class="text-danger">mince ! la réponse était : {{ answerText }}</p>
+    <p v-else class="text-danger">mince ! </p>
     <p class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
 </template>
