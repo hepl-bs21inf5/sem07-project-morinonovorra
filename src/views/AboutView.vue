@@ -4,7 +4,7 @@
   <div class="container mt-3">
     <h1>à propos</h1>
     <img
-      src="@/images/intro.jpg"
+      src="@/assets/images/intro.jpg"
       alt="intro"
       class="question-image"
     />

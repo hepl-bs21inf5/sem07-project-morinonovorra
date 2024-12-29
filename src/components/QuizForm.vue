@@ -49,11 +49,7 @@ function reset(event: Event): void {
     <form @submit="submit">
       <div class="question">
         <h5>question 1 : sciences</h5>
-        <img
-          src="@/assets/images/ordre_planetes.jpg"
-          alt="ordre planètes"
-          class="question-image"
-        />
+        <img src="@/assets/images/ordre_planetes.jpg" alt="ordre planètes" class="question-image" />
         <QuestionRadio
           id="planete"
           v-model="questionStates[0]"
@@ -72,11 +68,7 @@ function reset(event: Event): void {
     <form @submit="submit">
       <div class="question">
         <h5>question 2 : littérature et arts</h5>
-        <img
-          src="@/assets/images/nuit_etoilee.jpg"
-          alt="nuit étoilée"
-          class="question-image"
-        />
+        <img src="@/assets/images/nuit_etoilee.jpg" alt="nuit étoilée" class="question-image" />
         <QuestionRadio
           id="oeuvre"
           v-model="questionStates[1]"
@@ -95,11 +87,7 @@ function reset(event: Event): void {
     <form @submit="submit">
       <div class="question">
         <h5>question 3 : capitale</h5>
-        <img
-          src="@/assets/images/australie.jpg"
-          alt="ordre planètes"
-          class="question-image"
-        />
+        <img src="@/assets/images/australie.jpg" alt="ordre planètes" class="question-image" />
         <QuestionRadio
           id="capitale"
           v-model="questionStates[2]"
@@ -118,11 +106,7 @@ function reset(event: Event): void {
     <form @submit="submit">
       <div class="question">
         <h5>question 4 : choix multiples</h5>
-        <img
-          src="@/assets/images/europecarte.jpg"
-          alt="slovaquie"
-          class="question-image"
-        />
+        <img src="@/assets/images/europecarte.jpg" alt="slovaquie" class="question-image" />
         <QuestionCheckbox
           id="membres"
           v-model="questionStates[3]"
@@ -145,11 +129,7 @@ function reset(event: Event): void {
     <form @submit="submit">
       <div class="question">
         <h5>question 5 : réponse libre</h5>
-        <img
-          src="@/assets/images/volcan.jpg"
-          alt="volcan"
-          class="question-image"
-        />
+        <img src="@/assets/images/volcan.jpg" alt="volcan" class="question-image" />
         <QuestionText
           id="volcan"
           v-model="questionStates[4]"
