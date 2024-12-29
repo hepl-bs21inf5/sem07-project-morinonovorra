@@ -13,25 +13,60 @@
   - Explications et réflextions sur le code (questions pour nous guider chaque semaine)
   - Suite du projet (que pourrait-on faire pour la suite du projet ?)
 
+commentaires
+// dans le script (.vue)
+<!- --> dans le template (.vue)
+
 ## <p style="color: LightCoral;">Projet 01 - Semaine 07 (07.11 - 13.11) : Application Web</p>
 
 ### <p style="color: PeachPuff;">Vue.js</p>
 
-| Temps estimé | Temps passé | Difficultés rencontrées                           | Solutions trouvées          | Explications et réflexions                                                                                                                             | Projet                             |
+| Temps estimé | Temps passé | Difficultés                                       | Solutions                   | Explications et réflexions                                                                                                                             | Projet                             |
 | ------------ | ----------- | ------------------------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- |
 | 20 min       | 15 min      | comment cloner dépôt Git dans répertoire du cours | **git clone** dans terminal | installer les dépendances et formater le code : **npm install**, et **npm run format** ; pour lancer le projet en mode développement : **npm run dev** | créations de fichiers et du projet |
 
 ### <p style="color: PeachPuff;">Bootstrap</p>
 
-| Temps estimé | Temps passé | Difficultés rencontrées                  | Solutions trouvées                                     | Explications et réflexions                                                                       | Projet                                               |
+| Temps estimé | Temps passé | Difficultés                              | Solutions                                              | Explications et réflexions                                                                       | Projet                                               |
 | ------------ | ----------- | ---------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
 | 5 min        | 10 min      | trouver pourquoi ça ne marche pas / beug | ne pas hésiter à comparer régulièrement au code source | isntaller Bootstrap et Boostrap Icons : **npm install bootstrap @popperjs/core bootstrap-icons** | changement de la langue et du titre de l'application |
 
 ### <p style="color: PeachPuff;">Quiz</p>
 
-| Temps estimé | Temps passé | Difficultés rencontrées                                                       | Solutions trouvées | Explications et réflexions | Suite du projet                                                                                                  |
-| ------------ | ----------- | ----------------------------------------------------------------------------- | ------------------ | -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| 10 min       | 30 min      | afficher score final et message de félicitations si le score est parfait !!!! |                    |                            | ajout de questions, bouton de réinitialisation, modification de la couleur du bouton et les icônes de navigation |
+| Temps estimé | Temps passé | Difficultés                                                                   | Solutions | Explications et réflexions | Projet                                                                                                           |
+| ------------ | ----------- | ----------------------------------------------------------------------------- | --------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| 10 min       | 30 min      | afficher score final et message de félicitations si le score est parfait !!!! |           |                            | ajout de questions, bouton de réinitialisation, modification de la couleur du bouton et les icônes de navigation |
+
+pour ajouter message de félicitations si le score est parfait : (dans QuizForm.vue)
+
+<div v-if="submitted">
+      <p>Votre score est de : {{ score }} / {{ totalScore }}</p>
+      <!-- Message de félicitations si le score est parfait -->
+      <p v-if="score === totalScore" class="congratulations">
+        Félicitations, vous avez un score parfait ! 🎉
+      </p>
+      <!-- Message générique si le score n'est pas parfait -->
+      <p v-else>
+        Essayez encore pour améliorer votre score.
+      </p>
+    </div>
+
+<div v-if="submitted">
+        <p>votre score est de : {{ score }} / {{ totalScore }}</p>
+        <p v-if="score === totalScore" class="congratulations">c'est un sans-faute, chapeau !</p>
+        <p v-else-if="score === 1">au moins un de bon, c'est un début !</p>
+        <p v-else-if="totalScore - score >= 2 && totalScore - score <= 4">
+          pas mal, mais il reste du boulot !
+        </p>
+        <p v-else-if="totalScore - score === 1">presque un sans-faute, t'es sur la bonne voie !</p>
+        <p v-else>oups, on a vu mieux !</p>
+      </div>
+
+pour changer les icones dans la bar de navigation avec boostrap :
+<RouterLink class="nav-link" to="/relax">
+<i class="bi bi-puzzle"></i> <-----ici
+quiz relax
+</RouterLink>
 
 ### <p style="color: PeachPuff;">Questions</p>
 
@@ -100,9 +135,9 @@ https://github.com/blueur/quiz/tree/week/1-final
 
 ### <p style="color: PeachPuff;">QuestionRadio</p>
 
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |                    |                            |
+| Temps estimé | Temps passé | Difficultés                                                      | Solutions                                                   | Explications et réflexions | Projet                                                                                                                               |
+| ------------ | ----------- | ---------------------------------------------------------------- | ----------------------------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+|              |             | ne pas oublier d'importer le nouveau composant dans QuizForm.vue | import QuestionRadio from "@/components/QuestionRadio.vue"; |                            | remplacer chaque question par un composant **QuestionRadio** (afin d'éviter de devoir répéter les mêmes étapes pour chaque question) |
 
 > Propriétés du composant **QuestionRadio** :
 
@@ -123,75 +158,54 @@ https://github.com/blueur/quiz/tree/week/1-final
 
 > Quelle est la différence entre un prop et un modèle (v-model) ?
 
-### QuestionText
+### <p style="color: PeachPuff;">QuestionText</p>
 
-### <p style="color: PeachPuff;">Journal de bord</p>
-
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions  | Projet                                                                                    |
+| ------------ | ----------- | ----------- | --------- | --------------------------- | ----------------------------------------------------------------------------------------- |
+|              |             |             |           | nouveauté : **placeholder** | création d'un composant **QuestionText.vue** pour les questions à réponse textuelle libre |
 
 > Comment rendre la propriété placeholder optionnelle ?
 
-### API
+### <p style="color: PeachPuff;">API</p>
 
-### <p style="color: PeachPuff;">Journal de bord</p>
+| Temps estimé | Temps passé | Difficultés               | Solutions                                                                                                                                                                                                                                                                                                   | Explications et réflexions                                                                            | Projet                                                                                                                                                 |
+| ------------ | ----------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|              |             | créer les chemins / liens | ajouter une nouvelle tap **Trivia** dans **App.vue** ; créer une nouvelle vue **TriviaView.vue** dans le dossier **src/views** ; mettre à jour le fichier **router/index.ts** en ajoutant une nouvelle route ; puis finalement ajouter le composant **QuizTrivia.vue** dans le dossier **src/components** : | **amount** : le nombre de questions à obtenir ; **type** : le type de questions (multiple ou boolean) | Utilisation d'une API (Open Trivia Database) pour obtenir des questions aléatoires pour notre quiz (en faisant une requête HTTP GET à l'URL suivante : |
 
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+https://opentdb.com/api.php?amount=10&type=multiple)
 
-> Open Trivia Database est une API qui fournit des questions de quiz, on peut en obtenir en faisant une requête HTTP GET à l'URL suivante :
-> https://opentdb.com/api.php?amount=10&type=multiple
+À sa création, ce composant va récupérer 10 questions avec l'API et stocker les questions dans la **ref** **questions**. Ensuite, on affiche chaque question avec le composant **QuestionRadio** (avec une boucle **v-for**) en passant les propriétés nécessaires.
 
-> À sa création, ce composant va récupérer 10 questions avec l'API et stocker les questions dans la **ref** **questions**. Ensuite, on affiche chaque question avec le composant **QuestionRadio** (avec une boucle **v-for**) en passant les propriétés nécessaires.
+### <p style="color: PeachPuff;">QuestionCheckbox</p>
 
-- **amount** : le nombre de questions à obtenir
-- **type** : le type de questions (multiples ou boolean)
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions                                                                    | Projet                                                                        |
+| ------------ | ----------- | ----------- | --------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+|              |             |             |           | Noter que comme la réponse est une liste, il faut initialiser la **ref** avec une liste vide. | Les checkboxes sont comme les radios, mais on peut en sélectionner plusieurs. |
 
-### QuestionCheckbox (bonus)
-
-### <p style="color: PeachPuff;">Journal de bord</p>
-
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
-
-> Les checkboxes sont comme les radios, mais on peut en sélectionner plusieurs.
-> Noter que comme la réponse est une liste, il faut initialiser la **ref** avec une liste vide.
-
-### Exemple Semaine 02
-
-### <p style="color: PeachPuff;">Journal de bord</p>
+### <p style="color: PeachPuff;">Exemple Semaine 02</p>
 
 https://github.com/blueur/quiz/tree/week/2-final
 
 ## <p style="color: LightCoral;">Projet 03 - Semaine 09 (21.11 - 27.11) : Base de données</p>
 
-### Réponse
+### <p style="color: PeachPuff;">Réponse</p>
 
-### <p style="color: PeachPuff;">Journal de bord</p>
-
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
+| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
+|              |             |             |           |                            |  incorporer la vérification de la réponse dans chaque composant de question (car elle est spécifique à chaque type de question)      |
 
 - À quoi sert l'option immediate: true dans le watch ?
 - Que se passe-t-il si on l'enlève ou si on met immediate: false ?
 
-### Score
+### <p style="color: PeachPuff;">Score</p>
 
-### <p style="color: PeachPuff;">Journal de bord</p>
-
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
+| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
+|              |             |             |           |                            |        |
 
 - Proposer une autre manière de calculer le score (réecrire la fonction du computed) et comparer les deux méthodes
 
-### Exemple Semaine 03
-
-### <p style="color: PeachPuff;">Journal de bord</p>
+### <p style="color: PeachPuff;">Exemple Semaine 03</p>
 
 https://hep.davidtang.ch/docs/seminaire/projet#semaine-1:~:text=https%3A//github.com/blueur/quiz/tree/week/3%2Dfinal
 
@@ -199,13 +213,11 @@ https://github.com/blueur/quiz/tree/week/3-final
 
 ## <p style="color: LightCoral;">Projet 04 - Semaines 10 / 11 (28.11 - 04.12) / (05.12 - 11.12) : SQL + Syntaxe / Transaction & Indexation</p>
 
-### États
+### <p style="color: PeachPuff;">États</p>
 
-### <p style="color: PeachPuff;">Journal de bord</p>
-
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions                                                                            | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | ----------------------------------------------------------------------------------------------------- | --------------- |
-|              |             |                         |                    | enum (type énuméré) est un type qui peut prendre une valeur parmi un ensemble de valeurs pré-définies |
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions                                                                            | Projet |
+| ------------ | ----------- | ----------- | --------- | ----------------------------------------------------------------------------------------------------- | ------ |
+|              |             |             |           | enum (type énuméré) est un type qui peut prendre une valeur parmi un ensemble de valeurs pré-définies |
 
 temps estimé : 45m
 temps passé : 60m
@@ -231,43 +243,35 @@ solutions trouvées : regardé la partie du code en question, compris que les nu
 
 - Comment pourrait-on réécrire autrement la logique du watch sur value ?
 
-### Boutons
+### <p style="color: PeachPuff;">Boutons</p>
 
-### <p style="color: PeachPuff;">Journal de bord</p>
-
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
+| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
+|              |             |             |           |                            |        |
 
 temps estimé : 10m
 temps passé : 15m
 
-### Réponses immuables (non modifiables)
+### <p style="color: PeachPuff;">Réponses immuables (non modifiables)</p>
 
-### <p style="color: PeachPuff;">Journal de bord</p>
-
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
+| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
+|              |             |             |           |                            |        |
 
 temps estimé : 10m
 temps passé : 5m
 
-### Exemple
-
-### <p style="color: PeachPuff;">Journal de bord</p>
+### <p style="color: PeachPuff;">Exemple</p>
 
 https://github.com/blueur/quiz/tree/week/4-final
 
 ## <p style="color: LightCoral;">Projet 05 - Semaine 12 (12.12 - 18.12) : NoSQL</p>
 
-### Réponse détaillée
+### <p style="color: PeachPuff;">Réponse détaillée</p>
 
-### <p style="color: PeachPuff;">Journal de bord</p>
-
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
+| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
+|              |             |             |           |                            |        |
 
 - Ajouter ce computed dans QuestionRadio.vue : - const answerText = computed<string>(
   () =>
@@ -284,13 +288,11 @@ https://github.com/blueur/quiz/tree/week/4-final
 - **class="text-success"** et **class=text-danger"** permettent de changer la couleur du texte avec Bootstrap.
 - **class="blockquote-footer"** a été utilisé pour afficher les détails.
 
-### Style
+### <p style="color: PeachPuff;">Style</p>
 
-### <p style="color: PeachPuff;">Journal de bord</p>
-
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
+| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
+|              |             |             |           |                            |        |
 
 > Pour changer les couleurs dans un composant, ajouter un **< style scoped >** à la fin du fichier :
 
@@ -298,29 +300,23 @@ https://github.com/blueur/quiz/tree/week/4-final
 - **!important** permet de forcer l'application du style.
 - Aussi possible de créer les noms de classes personnalisés (par exemple : **.answer-correct** et **.answer-wrong**).
 
-### Exemple Semaine 05
-
-### <p style="color: PeachPuff;">Journal de bord</p>
+### <p style="color: PeachPuff;">Exemple Semaine 05</p>
 
 https://github.com/blueur/quiz/tree/week/5-final
 
 ## <p style="color: LightCoral;">Projet 06 - Semaine 13 (19.12 - 25.12) : Révision</p>
 
-#### Déploiement
+### <p style="color: PeachPuff;">Déploiement</p>
 
-### <p style="color: PeachPuff;">Journal de bord</p>
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
+| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
+|              |             |             |           |                            |        |
 
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+### <p style="color: PeachPuff;">Améliorations</p>
 
-#### Améliorations
-
-### <p style="color: PeachPuff;">Journal de bord</p>
-
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
+| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
+|              |             |             |           |                            |        |
 
 > Voici quelques idées pour améliorer le projet :
 
@@ -449,13 +445,11 @@ margin-bottom: 30px; /_ Ajustez la valeur pour ajouter plus d’espace _/
    placeholder="indice : la carte"
    />
 
-### Aides
+### <p style="color: PeachPuff;">Aides</p>
 
-### <p style="color: PeachPuff;">Journal de bord</p>
-
-| Temps estimé | Temps passé | Difficultés rencontrées | Solutions trouvées | Explications et réflexions | Suite du projet |
-| ------------ | ----------- | ----------------------- | ------------------ | -------------------------- | --------------- |
-|              |             |                         |
+| Temps estimé | Temps passé | Difficultés | Solutions | Explications et réflexions | Projet |
+| ------------ | ----------- | ----------- | --------- | -------------------------- | ------ |
+|              |             |             |           |                            |        |
 
 <p style="color: SlateGray;">Texte en gris ardoise</p>
 <p style="color: gray;">Texte en gris</p>
@@ -469,17 +463,13 @@ margin-bottom: 30px; /_ Ajustez la valeur pour ajouter plus d’espace _/
 <p style="color: Olive;">Texte en vert olive</p>
 <p style="color: DarkGreen;">Texte en vert foncé</p>
 
-#### Documentations
-
-### <p style="color: PeachPuff;">Journal de bord</p>
+### <p style="color: PeachPuff;">Documentations</p>
 
 - Vue.js : https://fr.vuejs.org/guide/introduction
 - Bootstrap : https://getbootstrap.com/docs/5.3/getting-started/introduction/
 - Bootstrap Icons : https://icons.getbootstrap.com/
 
-#### Vérification
-
-### <p style="color: PeachPuff;">Journal de bord</p>
+### <p style="color: PeachPuff;">Vérification</p>
 
 - Pour vérifier que le code est correct localement, on peut construire le projet :
 
@@ -488,9 +478,7 @@ margin-bottom: 30px; /_ Ajustez la valeur pour ajouter plus d’espace _/
 - Résultat final :
   - https://blueur.github.io/quiz/
 
-## Évaluation
-
-### <p style="color: PeachPuff;">Journal de bord</p>
+### <p style="color: PeachPuff;">Évaluation</p>
 
 - Rapport :
   - **Le journal de bord est à jour et complet.**

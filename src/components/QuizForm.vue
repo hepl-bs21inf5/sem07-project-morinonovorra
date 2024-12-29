@@ -13,20 +13,24 @@ const questionStates = ref<QuestionState[]>([
   QuestionState.Empty, // Question Checkbox
 ])
 
+//vérifie si toutes les questions sont remplies
 const filled = computed<boolean>(() =>
   questionStates.value.every((state) => state === QuestionState.Fill),
 )
 
+//vérifie si le quiz est soumis
 const submitted = computed<boolean>(() =>
   questionStates.value.every(
     (state) => state === QuestionState.Correct || state === QuestionState.Wrong,
   ),
 )
 
+//calcul du score actuel
 const score = computed<number>(
   () => questionStates.value.filter((state) => state === QuestionState.Correct).length,
 )
 
+//score total (nombre de questions)
 const totalScore = computed<number>(() => questionStates.value.length)
 
 function submit(event: Event): void {
@@ -46,7 +50,7 @@ function reset(event: Event): void {
       <div class="question">
         <h5>question 1 : sciences</h5>
         <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\6043ef3f3ef82d890a6a7bc2bcd899ff.jpg"
+          src="@/assets/images/ordre_planetes.jpg"
           alt="ordre planètes"
           class="question-image"
         />
@@ -69,7 +73,7 @@ function reset(event: Event): void {
       <div class="question">
         <h5>question 2 : littérature et arts</h5>
         <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\4a9cfdec861d304d61a40b06a402fe7f.jpg"
+          src="@/assets/images/nuit_etoilee.jpg"
           alt="nuit étoilée"
           class="question-image"
         />
@@ -92,7 +96,7 @@ function reset(event: Event): void {
       <div class="question">
         <h5>question 3 : capitale</h5>
         <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\THE BEST AUSTRALIA FLAG MAP IMAGES - eDigital Agency.jpeg"
+          src="@/assets/images/australie.jpg"
           alt="ordre planètes"
           class="question-image"
         />
@@ -115,7 +119,7 @@ function reset(event: Event): void {
       <div class="question">
         <h5>question 4 : choix multiples</h5>
         <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\europe.jpg"
+          src="@/assets/images/europecarte.jpg"
           alt="slovaquie"
           class="question-image"
         />
@@ -142,7 +146,7 @@ function reset(event: Event): void {
       <div class="question">
         <h5>question 5 : réponse libre</h5>
         <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\ceinture-de-feu-du-pacifique.jpg"
+          src="@/assets/images/volcan.jpg"
           alt="volcan"
           class="question-image"
         />
@@ -151,12 +155,12 @@ function reset(event: Event): void {
           v-model="questionStates[4]"
           text="quel est le pays qui possède le plus de volcans actifs ?"
           answer="indonésie"
-          :accepted-answers="['indonésie', 'indonesia', 'Indonésie', 'Indonesie', 'Indonesia' ]"
+          :accepted-answers="['indonésie', 'indonesia', 'Indonésie', 'Indonesie', 'Indonesia']"
           answer-detail="l'indonésie, avec plus de 130 volcans actifs, se trouve sur la ceinture de feu du pacifique, une région où l'activité tectonique est intense."
           placeholder="indice : la carte"
         />
       </div>
-  
+
       <br />
       <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">
         Terminer
@@ -164,8 +168,17 @@ function reset(event: Event): void {
       &nbsp;
 
       <button class="btn btn-secondary" @click="reset">Réinitialiser</button>
-      <div v-if="submitted">votre score est de : {{ score }} / {{ totalScore }}</div>
-      <div>résultats : {{ questionStates }}</div>
+      <div v-if="submitted">
+        <p>votre score est de : {{ score }} / {{ totalScore }}</p>
+        <p v-if="score === totalScore" class="congratulations">c'est un sans-faute, chapeau !</p>
+        <p v-else-if="score === 1">au moins un de bon, c'est un début !</p>
+        <p v-else-if="totalScore - score >= 2 && totalScore - score <= 4">
+          pas mal, mais il reste du boulot !
+        </p>
+        <p v-else-if="totalScore - score === 1">presque un sans-faute, t'es sur la bonne voie !</p>
+        <p v-else>oups, on a vu mieux !</p>
+      </div>
+      <!--<div>résultats : {{ questionStates }}</div>-->
     </form>
   </div>
 </template>

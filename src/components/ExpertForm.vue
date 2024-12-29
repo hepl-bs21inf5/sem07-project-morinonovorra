@@ -45,11 +45,7 @@ function reset(event: Event): void {
     <form @submit="submit">
       <div class="question">
         <h5>question 1 : sciences</h5>
-        <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\2a19e9e53280c4d258b8fd2022bcde34.jpg"
-          alt="planètes"
-          class="question-image"
-        />
+        <img src="@/assets/images/densite_planetes.jpg" alt="planètes" class="question-image" />
         <ExpertRadio
           id="planete"
           v-model="questionStates[0]"
@@ -68,11 +64,7 @@ function reset(event: Event): void {
     <form @submit="submit">
       <div class="question">
         <h5>question 2 : littérature</h5>
-        <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\onu.jpg"
-          alt="planètes"
-          class="question-image"
-        />
+        <img src="@/assets/images/onu.jpg" alt="planètes" class="question-image" />
         <ExpertRadio
           id="oeuvre"
           v-model="questionStates[1]"
@@ -91,11 +83,7 @@ function reset(event: Event): void {
     <form @submit="submit">
       <div class="question">
         <h5>question 3 : capitale</h5>
-        <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\Карта флага Казахстана _ Премиум Фото.jpeg"
-          alt="ordre planètes"
-          class="question-image"
-        />
+        <img src="@/assets/images/kazakhstan.jpg" class="question-image" />
         <ExpertRadio
           id="capitale"
           v-model="questionStates[2]"
@@ -114,11 +102,7 @@ function reset(event: Event): void {
     <form @submit="submit">
       <div class="question">
         <h5>question 4 : choix multiples</h5>
-        <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\la-mer-caspienne.jpeg"
-          alt="Mer Caspienne"
-          class="question-image"
-        />
+        <img src="@/assets/images/caspienne.jpg" alt="Mer Caspienne" class="question-image" />
         <ExpertCheckbox
           id="membres"
           v-model="questionStates[3]"
@@ -141,11 +125,7 @@ function reset(event: Event): void {
     <form @submit="submit">
       <div class="question">
         <h5>question 5 : réponse libre</h5>
-        <img
-          src="C:\Users\morino\OneDrive\Hepl\Ba3\INF5 - Programmation Web et base de données\sem07-project-morinonovorra\images\danube.jpg"
-          alt="danube"
-          class="question-image"
-        />
+        <img src="@/assets/images/danube.jpg" alt="danube" class="question-image" />
         <ExpertText
           id="danube"
           v-model="questionStates[4]"
@@ -163,8 +143,17 @@ function reset(event: Event): void {
       &nbsp;
 
       <button class="btn btn-secondary" @click="reset">Réinitialiser</button>
-      <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
-      <div>Debug états : {{ questionStates }}</div>
+      <div v-if="submitted">
+        <p>votre score est de : {{ score }} / {{ totalScore }}</p>
+        <p v-if="score === totalScore" class="congratulations">score parfait, impressionnant !</p>
+        <p v-else-if="score === 1">tu n'as pas tout faux, courage !</p>
+        <p v-else-if="totalScore - score >= 2 && totalScore - score <= 4">
+          courage, tu as de bonnes bases !
+        </p>
+        <p v-else-if="totalScore - score === 1">une petite erreur, mais tu assures !</p>
+        <p v-else>oups, ça arrive aussi aux meilleurs !</p>
+      </div>
+      <!--<div>Debug états : {{ questionStates }}</div>-->
     </form>
   </div>
 </template>
